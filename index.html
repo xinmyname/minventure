@@ -9,52 +9,77 @@
     <meta name="author" content="">
 
 	<title>Minventure - A Minimalist Adventure</title>
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
 	<link rel="stylesheet" href="css/minventure.css">
-
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="bower_components/html5shiv/dist/html5shiv.js"></script>
-      <script src="bower_components/respond/respond.min.js"></script>
-    <![endif]-->
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="bower_components/html5shiv/dist/html5shiv.js"></script>
+    <script src="bower_components/respond/respond.min.js"></script>
+  <![endif]-->
   </head>
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Minventure</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#save">Save</a></li>
-            <li><a href="#load">Load</a></li>
-            <li><a href="#about">About</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
+    <div id="container">
+
+      <table id="attributes">
+        <tbody>
+          <tr>
+            <td>Time</td>
+            <td>0</td>
+          </tr>            
+          <tr>
+            <td>Health</td>
+            <td>0</td>
+          </tr>            
+          <tr>
+            <td>Level</td>
+            <td>0</td>
+          </tr>            
+          <tr>
+            <td>Experience</td>
+            <td>0</td>
+          </tr>            
+          <tr>
+            <td>Money</td>
+            <td>0</td>
+          </tr>            
+          <tr>
+            <td>Loot</td>
+            <td>0</td>
+          </tr>            
+        </tbody>
+      </table>
+
+      <div id="encounters" class="prarie">
+        <div id="description">Prarie!</div>
       </div>
+
+      <div id="playerControls">
+        <div class="controlRow">
+          <button class="selected">Moving!</button>
+        </div>
+        <div class="controlRow">
+          <button>Fight!</button>
+        </div>
+        <div class="controlRow">
+          <button>Buy!</button>
+        </div>
+        <div class="controlRow">
+          <button>Sell!</button>
+        </div>
+        <div class="controlRow">
+          <button>Rest!</button>
+        </div>
+      </div>
+
+      <div id="gameControls">
+        
+      </div>
+
     </div>
 
-    <div class="container">
-
-      <div class="starter-template">
-        <h1>Minventure</h1>
-        <p class="lead">A minimalist adventure game.</p>
-      </div>
-
-    </div><!-- /.container -->
-
-
-	<script src="bower_components/jquery/jquery.min.js"></script>
-	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/jquery/jquery.min.js"></script>
   </body>
 </html>
 

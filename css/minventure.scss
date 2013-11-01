@@ -1,0 +1,59 @@
+body {
+	font-family: 'Helvetica Neue',Calibri;
+	font-size: 12pt;
+	margin: 0.5em;
+}
+
+#attributes {
+	width: 100%;
+}
+
+#attributes tbody tr td {
+	width: 50%;
+}
+
+#encounters {
+	width: 100%;
+	border: solid 1px black;
+	margin: 1em 0;
+
+	#description {
+		padding: 1em;
+		text-align: center;
+	}
+}
+
+.controlRow {
+	margin-bottom: 0.25em;
+
+	button {
+		width: 50%;
+		height: 2em;
+
+	}
+	
+	.selected {
+		background-color: #8cf;
+	}
+}
+
+
+.prarie {
+	background-color: #bf6;
+}
+
+@media (min-width: 768px)
+{
+
+
+}
+
+@media (min-width: 992px)
+{
+
+}
+
+@media (min-width: 1200px)
+{
+
+}
