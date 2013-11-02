@@ -1,7 +1,34 @@
+@mixin min-box-shadow($color)
+{
+    -moz-box-shadow:inset 0px 1px 0px 0px $color;
+    -webkit-box-shadow:inset 0px 1px 0px 0px $color;
+    box-shadow:inset 0px 1px 0px 0px $color;
+}
+
+@mixin min-bg-gradient($start,$stop)
+{
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, $start), color-stop(1, $stop));
+    background:-moz-linear-gradient(top, $start 5%, $stop 100%);
+    background:-webkit-linear-gradient(top, $start 5%, $stop 100%);
+    background:-o-linear-gradient(top, $start 5%, $stop 100%);
+    background:-ms-linear-gradient(top, $start 5%, $stop 100%);
+    background:linear-gradient(to bottom, $start 5%, $stop 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$start', endColorstr='$stop',GradientType=0);
+    background-color:$start;
+}
+
+@mixin min-border-radius($size)
+{
+    -moz-border-radius:$size;
+    -webkit-border-radius:$size;
+    border-radius:$size;
+}
+
 body {
 	font-family: 'Helvetica Neue',Calibri;
 	font-size: 12pt;
 	margin: 0.5em;
+	overflow: hidden;
 }
 
 #attributes {
@@ -9,13 +36,20 @@ body {
 }
 
 #attributes tbody tr td {
-	width: 50%;
+	width: 33%;
+}
+
+#attributes tbody tr td+td {
+	width: auto;
 }
 
 #encounters {
 	width: 100%;
 	border: solid 1px black;
 	margin: 1em 0;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
 
 	#description {
 		padding: 1em;
@@ -25,32 +59,114 @@ body {
 
 .controlRow {
 	margin-bottom: 0.25em;
+}
 
-	button {
-		width: 50%;
-		height: 2em;
+#gameControls {
+	width: 100%;
+	position: absolute;
+	height: 1.5em;
+	bottom: 0;
 
-	}
-	
-	.selected {
-		background-color: #8cf;
+	a {
+		padding: 0 0.5em;
+		color: #1e62d0;
+		text-decoration: none;
 	}
 }
 
+button {
+	width: 50%;
+	outline-width: 0;   
+	@include min-box-shadow(#ffffff);     
+	@include min-bg-gradient(#f9f9f9, #e9e9e9);
+	@include min-border-radius(3px);        
+    
+    border:1px solid #dcdcdc;
+    
+    display:inline-block;
+    color:#666666;
+    font-weight:normal;
+    padding:6px 24px;
+    text-decoration:none;
+    
+    text-shadow:0px 1px 0px #ffffff;
+    
+}
+
+.selected {
+	@include min-box-shadow(#97c4fe);     
+	@include min-bg-gradient(#3d94f6, #1e62d0);
+	@include min-border-radius(3px);        
+        
+    border:1px solid #337fed;
+    
+    color:#ffffff;
+    
+    text-shadow:0px 1px 0px #1570cd;
+}
 
 .prarie {
-	background-color: #bf6;
+	@include min-box-shadow(#E3FF99);     
+	@include min-bg-gradient(#EBFA8F, #B8ED75);
+    color:#000000;    
+    text-shadow:0px 1px 0px #E5EC83;
 }
+
+.swamp {
+	@include min-box-shadow(#a4e271);     
+	@include min-bg-gradient(#89c403, #77a809);
+    color:#ffffff;    
+    text-shadow:0px 1px 0px #659940;
+}
+
+
+@media (min-width: 512px)
+{
+	body {
+		font-size: 16pt;
+	}
+	button,#encounters {
+	    -moz-border-radius:3px;
+	    -webkit-border-radius:3px;
+	    border-radius:3px;
+	}
+}
+
+@media (min-width: 640px)
+{
+	body {
+		font-size: 20pt;
+	}
+	button,#encounters {
+	    -moz-border-radius:4px;
+	    -webkit-border-radius:4px;
+	    border-radius:4px;
+	}
+}
+
 
 @media (min-width: 768px)
 {
-
-
+	body {
+		font-size: 24pt;
+	}
+	button,#encounters {
+	    -moz-border-radius:6px;
+	    -webkit-border-radius:6px;
+	    border-radius:6px;
+	}
 }
 
 @media (min-width: 992px)
 {
-
+	body {
+		text-align: center;
+	}
+	#container {
+		width:960px;
+		margin: 0 auto;
+		text-align: left;
+	}
 }
 
 @media (min-width: 1200px)
