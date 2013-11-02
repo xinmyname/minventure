@@ -1,5 +1,5 @@
 body {
-  font-family: 'Helvetica Neue',Calibri;
+  font-family: "Helvetica Neue",Calibri;
   font-size: 12pt;
   margin: 0.5em;
   overflow: hidden; }
@@ -23,12 +23,10 @@ h1 {
 
 #attributes {
   width: 100%; }
-
-#attributes tbody tr td {
-  width: 33%; }
-
-#attributes tbody tr td + td {
-  width: auto; }
+  #attributes tbody tr td {
+    width: 33%; }
+  #attributes tbody tr td + td {
+    width: auto; }
 
 #encounters {
   width: 100%;
@@ -68,6 +66,9 @@ button {
   padding: 6px 24px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #ffffff; }
+
+input[type="range"] {
+  width: 45%; }
 
 .selected {
   -moz-box-shadow: inset 0px 1px 0px 0px #97c4fe;
