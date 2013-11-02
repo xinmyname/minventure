@@ -4,6 +4,23 @@ body {
   margin: 0.5em;
   overflow: hidden; }
 
+h1 {
+  font-size: 12pt;
+  font-weight: normal;
+  padding-right: 1em;
+  display: inline; }
+
+#gameControls {
+  width: 100%;
+  height: 1em;
+  padding-bottom: 0.25em;
+  margin-bottom: 0.25em;
+  border-bottom: solid 1px #ccc; }
+  #gameControls a {
+    padding-right: 0.5em;
+    color: #1e62d0;
+    text-decoration: none; }
+
 #attributes {
   width: 100%; }
 
@@ -26,16 +43,6 @@ body {
 
 .controlRow {
   margin-bottom: 0.25em; }
-
-#gameControls {
-  width: 100%;
-  position: absolute;
-  height: 1.5em;
-  bottom: 0; }
-  #gameControls a {
-    padding: 0 0.5em;
-    color: #1e62d0;
-    text-decoration: none; }
 
 button {
   width: 50%;
@@ -112,7 +119,7 @@ button {
   text-shadow: 0px 1px 0px #659940; }
 
 @media (min-width: 512px) {
-  body {
+  body, h1 {
     font-size: 16pt; }
 
   button, #encounters {
@@ -120,7 +127,7 @@ button {
     -webkit-border-radius: 3px;
     border-radius: 3px; } }
 @media (min-width: 640px) {
-  body {
+  body, h1 {
     font-size: 20pt; }
 
   button, #encounters {
@@ -128,7 +135,7 @@ button {
     -webkit-border-radius: 4px;
     border-radius: 4px; } }
 @media (min-width: 768px) {
-  body {
+  body, h1 {
     font-size: 24pt; }
 
   button, #encounters {
