@@ -35,27 +35,23 @@ class GameState
 		$('#loot').html(value)
 
 	setEncounter: (value) ->
+		@encounter?.teardown()
 		@encounter = value
-		$('#encounter').removeClass();
-		$('#encounter').addClass(value.id)
-		$('#description').html(value.name)
+		@encounter.setup()
 
 	setPlayerState: (value) ->
-
+		@playerState?.teardown()
 		@playerState = value
-
-		for keyId,keyValue of playerStates
-			$button = $('#' + keyId)
-			$button.removeClass()
-			if keyId == value.id
-				$button.addClass("selected")
-				$button.html(keyValue.kinetic)
-			else
-				$button.html(keyValue.potential)
+		@playerState.setup()
 
 class Encounter
 	constructor:(@id,@name) ->
+
 	setup: ->
+		$('#encounter').removeClass();
+		$('#encounter').addClass(@id)
+		$('#description').html(@name)
+
 	action: ->
 	teardown: ->
 
@@ -75,9 +71,18 @@ class Town extends Encounter
 
 class PlayerState
 	constructor: (@id,@potential,@kinetic) ->
-	setup: ->
+
 	action: ->
+
+	setup: ->
+		$button = $('#' + @id)
+		$button.addClass("selected")
+		$button.html(@kinetic)
+
 	teardown: ->
+		$button = $('#' + @id)
+		$button.removeClass()
+		$button.html(@potential)
 
 class Moving extends PlayerState
 	constructor: ->
@@ -139,11 +144,13 @@ gameState.setHealth 25
 gameState.setExperience 0
 gameState.setMoney 0
 gameState.setLoot 0
-gameState.setEncounter encounters.swamp
+gameState.setEncounter encounters.mountains
 gameState.setPlayerState playerStates.rest
 
+timerId = 0
+
 setInterval = (delay, exp) ->
-    window.setInterval exp, delay
+    timerId = window.setInterval exp, delay
 
 setInterval 1000, ->
 	gameState.playerState.action()
@@ -163,4 +170,8 @@ $('#sell').click ->
 $('#rest').click ->
 	gameState.setPlayerState playerStates.rest
 
-
+$(document.documentElement).keypress (e) ->
+	if e.keyCode == 109 # m
+		gameState.setEncounter encounters.monster
+	if e.keyCode == 108 # l
+		gameState.setEncounter encounters.prarie

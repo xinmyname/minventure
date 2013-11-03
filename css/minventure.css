@@ -105,7 +105,7 @@ input[type="range"] {
   background: linear-gradient(to bottom, #ebfa8f 5%, #b8ed75 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$start', endColorstr='$stop',GradientType=0);
   background-color: #ebfa8f;
-  color: #000000;
+  color: #000;
   text-shadow: 0px 1px 0px #E5EC83; }
 
 .swamp {
@@ -120,8 +120,38 @@ input[type="range"] {
   background: linear-gradient(to bottom, #89c403 5%, #77a809 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$start', endColorstr='$stop',GradientType=0);
   background-color: #89c403;
-  color: #ffffff;
+  color: #fff;
   text-shadow: 0px 1px 0px #659940; }
+
+.hills {
+  -moz-box-shadow: inset 0px 1px 0px 0px #ffefbd;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #ffefbd;
+  box-shadow: inset 0px 1px 0px 0px #ffefbd;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e7ce65), color-stop(1, #8e9960));
+  background: -moz-linear-gradient(top, #e7ce65 5%, #8e9960 100%);
+  background: -webkit-linear-gradient(top, #e7ce65 5%, #8e9960 100%);
+  background: -o-linear-gradient(top, #e7ce65 5%, #8e9960 100%);
+  background: -ms-linear-gradient(top, #e7ce65 5%, #8e9960 100%);
+  background: linear-gradient(to bottom, #e7ce65 5%, #8e9960 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$start', endColorstr='$stop',GradientType=0);
+  background-color: #e7ce65;
+  color: #000;
+  text-shadow: 0px 1px 0px #FFEFBD; }
+
+.mountains {
+  -moz-box-shadow: inset 0px 1px 0px 0px #e4e1d4;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #e4e1d4;
+  box-shadow: inset 0px 1px 0px 0px #e4e1d4;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c2b8a4), color-stop(1, #492a02));
+  background: -moz-linear-gradient(top, #c2b8a4 5%, #492a02 100%);
+  background: -webkit-linear-gradient(top, #c2b8a4 5%, #492a02 100%);
+  background: -o-linear-gradient(top, #c2b8a4 5%, #492a02 100%);
+  background: -ms-linear-gradient(top, #c2b8a4 5%, #492a02 100%);
+  background: linear-gradient(to bottom, #c2b8a4 5%, #492a02 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$start', endColorstr='$stop',GradientType=0);
+  background-color: #c2b8a4;
+  color: #fff;
+  text-shadow: 0px 1px 0px #2C1F02; }
 
 .monster {
   -moz-box-shadow: inset 0px 1px 0px 0px #e25271;
