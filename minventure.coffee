@@ -16,13 +16,11 @@ class GameState
 		@health = value
 		$('#health').html(value)
 
-	setMaxHealth: (value) ->
-		@maxHealth = value
-		$('#maxHealth').html(value)
-
 	setLevel: (value) ->
 		@level = value
 		$('#level').html(value)
+		@maxHealth = Math.round(173.5*Math.exp(0.0339*value)-147)
+		$('#maxHealth').html(@maxHealth)
 
 	setExperience: (value) ->
 		@experience = value
@@ -43,6 +41,7 @@ class GameState
 		$('#description').html(value.name)
 
 	setPlayerState: (value) ->
+
 		@playerState = value
 
 		for keyId,keyValue of playerStates
@@ -63,10 +62,16 @@ class Encounter
 class Location extends Encounter
 
 class Monster extends Encounter
+	constructor: ->
+		super "monster", "Monster!"
 
 class City extends Encounter
+	constructor: ->
+		super "city", "City!"
 
 class Town extends Encounter
+	constructor: ->
+		super "town", "Town!"
 
 class PlayerState
 	constructor: (@id,@potential,@kinetic) ->
@@ -94,9 +99,31 @@ class Resting extends PlayerState
 	constructor: ->
 		super "rest", "Rest!", "Resting!"
 
+	action: ->
+		if (gameState.health < gameState.maxHealth)
+			expMultiplier = 1
+			lootMultiplier = 1
+			addHealth = expMultiplier * lootMultiplier
+			newHealth = gameState.health + addHealth
+			if (newHealth > gameState.maxHealth)
+				newHealth = gameState.maxHealth
+			gameState.setHealth newHealth
+
 encounters = 
 	swamp: new Location "swamp", "Swamp!"
 	prarie: new Location "prarie", "Prarie!"
+	hills: new Location "hills", "Hills!"
+	mountains: new Location "mountains", "Mountains!"
+	desert: new Location "desert", "Desert!"
+	coastline: new Location "coastline", "Coastline!"
+	jungle: new Location "jungle", "Jungle!"
+	ruins: new Location "ruins", "Ruins!"
+	tundra: new Location "tundra", "Tundra!"
+	forest: new Location "forest", "Forest!"
+	savana: new Location "savana", "Savana!"
+	town: new Town
+	city: new City
+	monster: new Monster
 
 playerStates =
 	move: new Moving 
@@ -107,9 +134,8 @@ playerStates =
 
 gameState = new GameState
 
-gameState.setHealth 25
-gameState.setMaxHealth 25
 gameState.setLevel 1
+gameState.setHealth 25
 gameState.setExperience 0
 gameState.setMoney 0
 gameState.setLoot 0
@@ -120,6 +146,7 @@ setInterval = (delay, exp) ->
     window.setInterval exp, delay
 
 setInterval 1000, ->
+	gameState.playerState.action()
 
 $('#move').click ->
 	gameState.setPlayerState playerStates.move
