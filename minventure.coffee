@@ -144,7 +144,7 @@ gameState.setHealth 25
 gameState.setExperience 0
 gameState.setMoney 0
 gameState.setLoot 0
-gameState.setEncounter encounters.mountains
+gameState.setEncounter encounters.coastline
 gameState.setPlayerState playerStates.rest
 
 timerId = 0

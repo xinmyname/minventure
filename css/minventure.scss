@@ -151,6 +151,19 @@ input[type="range"] {
     text-shadow:0px 1px 0px #2C1F02;
 }
 
+.desert {
+	@include min-box-shadow(#FFEDCD);     
+	@include min-bg-gradient(#FFCB64, #EEC879);
+    color:#000;    
+    text-shadow:0px 1px 0px #E7C26E;
+}
+
+.coastline {
+	@include min-box-shadow(#CDE7FF);     
+	@include min-bg-gradient(#208BDF, #D88D2C);
+    color:#fff;    
+    text-shadow:0px 1px 0px #242221;
+}
 
 .monster {
 	@include min-box-shadow(#e25271);     

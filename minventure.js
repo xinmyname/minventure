@@ -283,7 +283,7 @@
 
   gameState.setLoot(0);
 
-  gameState.setEncounter(encounters.mountains);
+  gameState.setEncounter(encounters.coastline);
 
   gameState.setPlayerState(playerStates.rest);
 
