@@ -165,11 +165,60 @@ input[type="range"] {
     text-shadow:0px 1px 0px #242221;
 }
 
+.jungle {
+	@include min-box-shadow(#EBFFCD);     
+	@include min-bg-gradient(#43A530, #1D350E);
+    color:#fff;    
+    text-shadow:0px 1px 0px #222421;
+}
+
+.ruins {
+	@include min-box-shadow(#EBE8E2);     
+	@include min-bg-gradient(#AF9F97, #474747);
+    color:#fff;    
+    text-shadow:0px 1px 0px #242424;
+}
+
+.tundra {
+	@include min-box-shadow(#ffffff);     
+	@include min-bg-gradient(#E4E4E4, #92A3B6);
+    color:#000;    
+    text-shadow:0px 1px 0px #EEEEEE;
+}
+
+.forest {
+	@include min-box-shadow(#AAF0BB);     
+	@include min-bg-gradient(#3ACA68, #2F5C0B);
+    color:#fff;    
+    text-shadow:0px 1px 0px #222421;
+}
+
+.savana {
+	@include min-box-shadow(#F9FADD);     
+	@include min-bg-gradient(#FAE75A, #AA8E36);
+    color:#000;    
+    text-shadow:0px 1px 0px #ECE8B2;
+}
+
+.town {
+	@include min-box-shadow(#FFFFFC);     
+	@include min-bg-gradient(#E9E8E2, #9C9C96);
+    color:#000;    
+    text-shadow:0px 1px 0px #DBDBD4;
+}
+
+.city {
+	@include min-box-shadow(#A2A296);     
+	@include min-bg-gradient(#575650, #BBB3AE);
+    color:#fff;    
+    text-shadow:0px 1px 0px #3d3d3d;
+}
+
 .monster {
 	@include min-box-shadow(#e25271);     
 	@include min-bg-gradient(#c44403, #a83b09);
     color:#ffffff;    
-    text-shadow:0px 1px 0px #993240;
+    text-shadow:0px 1px 0px #471D13;
 }
 
 

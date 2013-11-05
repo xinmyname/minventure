@@ -144,7 +144,7 @@ gameState.setHealth 25
 gameState.setExperience 0
 gameState.setMoney 0
 gameState.setLoot 0
-gameState.setEncounter encounters.coastline
+gameState.setEncounter encounters.monster
 gameState.setPlayerState playerStates.rest
 
 timerId = 0
@@ -154,6 +154,7 @@ setInterval = (delay, exp) ->
 
 setInterval 1000, ->
 	gameState.playerState.action()
+	
 
 $('#move').click ->
 	gameState.setPlayerState playerStates.move
