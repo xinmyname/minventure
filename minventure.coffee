@@ -88,6 +88,19 @@ class Moving extends PlayerState
 	constructor: ->
 		super "move", "Move!", "Moving!"
 
+	action: ->
+		next = Math.random()
+
+		for ec in encounterChance
+			if next >= ec.value
+				nextId = ec.id
+			else
+				break
+
+		nextEncounter = encounters[nextId]
+
+		gameState.setEncounter nextEncounter
+
 class Fighting extends PlayerState
 	constructor: ->
 		super "fight", "Fight!", "Fighting!"
@@ -130,6 +143,26 @@ encounters =
 	city: new City
 	monster: new Monster
 
+class EncounterChance
+	constructor:(@encounter,@chance) ->
+
+encounterChance=[
+	{value:0.00, id:"ruins"},
+	{value:0.05, id:"city"},
+	{value:0.10, id:"town"},
+	{value:0.20, id:"swamp"},
+	{value:0.25, id:"savana"},
+	{value:0.30, id:"desert"},
+	{value:0.35, id:"jungle"},
+	{value:0.40, id:"forest"},
+	{value:0.60, id:"hills"},
+	{value:0.70, id:"prarie"},
+	{value:0.75, id:"mountains"},
+	{value:0.80, id:"tundra"},
+	{value:0.85, id:"coastline"},
+	{value:0.9, id:"monster"}
+]
+
 playerStates =
 	move: new Moving 
 	fight: new Fighting 
@@ -154,7 +187,7 @@ setInterval = (delay, exp) ->
 
 setInterval 1000, ->
 	gameState.playerState.action()
-	
+
 
 $('#move').click ->
 	gameState.setPlayerState playerStates.move
