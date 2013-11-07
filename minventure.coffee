@@ -47,8 +47,80 @@ class GameState
 		@playerState = value
 		@playerState.setup()
 
+moveToNextEncounter = ->
+	next = Math.random()
+
+	for ec in encounterChance
+		if next >= ec.value
+			nextId = ec.id
+		else
+			break
+
+	nextEncounter = encounters[nextId]
+
+	gameState.setEncounter nextEncounter
+
 gameOver = ->
 	console.log "GAME OVER!"
+
+class PlayerState
+	constructor: (@id,@potential,@kinetic) ->
+
+	action: ->
+
+	setup: ->
+		$button = $('#' + @id)
+		$button.addClass("selected")
+		$button.html(@kinetic)
+
+	teardown: ->
+		$button = $('#' + @id)
+		$button.removeClass()
+		$button.html(@potential)
+
+class Moving extends PlayerState
+	constructor: ->
+		super "move", "Move!", "Moving!"
+
+	action: ->
+		if gameState.encounter instanceof Monster
+			if (Math.random < 0.10)
+				moveToNextEncounter()
+		else if gameState.limit == 1
+			moveToNextEncounter()
+		else
+			gameState.setLimit gameState.limit-1
+
+class Fighting extends PlayerState
+	constructor: ->
+		super "fight", "Fight!", "Fighting!"
+
+	action: ->
+		if gameState.encounter instanceof Monster
+			damage = 10
+			newLimit = gameState.limit - damage
+
+			if newLimit <= 0
+				@monsterDefeated()
+			else
+				gameState.setLimit newLimit
+
+	monsterDefeated: ->
+		moveToNextEncounter()
+
+class Resting extends PlayerState
+	constructor: ->
+		super "rest", "Rest!", "Resting!"
+
+	action: ->
+		if (gameState.health < gameState.maxHealth)
+			expMultiplier = 1
+			lootMultiplier = 1
+			addHealth = expMultiplier * lootMultiplier
+			newHealth = gameState.health + addHealth
+			if (newHealth > gameState.maxHealth)
+				newHealth = gameState.maxHealth
+			gameState.setHealth newHealth
 
 class Encounter
 	constructor:(@id,@name,@minLimit,@maxLimit) ->
@@ -108,89 +180,6 @@ class Town extends Encounter
 	constructor: ->
 		super "town", "Town!", 2, 4
 
-moveToNextEncounter = ->
-	next = Math.random()
-
-	for ec in encounterChance
-		if next >= ec.value
-			nextId = ec.id
-		else
-			break
-
-	nextEncounter = encounters[nextId]
-
-	gameState.setEncounter nextEncounter
-
-class PlayerState
-	constructor: (@id,@potential,@kinetic) ->
-
-	action: ->
-
-	setup: ->
-		$button = $('#' + @id)
-		$button.addClass("selected")
-		$button.html(@kinetic)
-
-	teardown: ->
-		$button = $('#' + @id)
-		$button.removeClass()
-		$button.html(@potential)
-
-class Moving extends PlayerState
-	constructor: ->
-		super "move", "Move!", "Moving!"
-
-	action: ->
-		if gameState.encounter instanceof Monster
-			if (Math.random < 0.10)
-				moveToNextEncounter()
-		else if gameState.limit == 1
-			moveToNextEncounter()
-		else
-			gameState.setLimit gameState.limit-1
-
-class Fighting extends PlayerState
-	constructor: ->
-		super "fight", "Fight!", "Fighting!"
-
-	action: ->
-		if gameState.encounter instanceof Monster
-			damage = 10
-			newLimit = gameState.limit - damage
-
-			if newLimit <= 0
-				@monsterDefeated()
-			else
-				gameState.setLimit newLimit
-
-	monsterDefeated: ->
-		moveToNextEncounter()
-
-class Buying extends PlayerState
-	constructor: ->
-		super "buy", "Buy!", "Buying!"
-
-class Selling extends PlayerState
-	constructor: ->
-		super "sell", "Sell!", "Selling!"
-
-class Resting extends PlayerState
-	constructor: ->
-		super "rest", "Rest!", "Resting!"
-
-	action: ->
-		if (gameState.health < gameState.maxHealth)
-			expMultiplier = 1
-			lootMultiplier = 1
-			addHealth = expMultiplier * lootMultiplier
-			newHealth = gameState.health + addHealth
-			if (newHealth > gameState.maxHealth)
-				newHealth = gameState.maxHealth
-			gameState.setHealth newHealth
-
-class EncounterChance
-	constructor:(@encounter,@chance) ->
-
 encounters = 
 	swamp: new Location "swamp", "Swamp!", 2, 8
 	prarie: new Location "prarie", "Prarie!", 2, 7
@@ -227,8 +216,6 @@ encounterChance=[
 playerStates =
 	move: new Moving 
 	fight: new Fighting 
-	buy: new Buying 
-	sell: new Selling 
 	rest: new Resting 
 
 gameState = new GameState
