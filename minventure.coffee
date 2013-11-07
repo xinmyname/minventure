@@ -34,6 +34,10 @@ class GameState
 		@loot = value
 		$('#loot').html(value)
 
+	setLimit: (value) ->
+		@limit = value
+		$('#limit').html(value)
+
 	setEncounter: (value) ->
 		@encounter?.teardown()
 		@encounter = value
@@ -45,7 +49,7 @@ class GameState
 		@playerState.setup()
 
 class Encounter
-	constructor:(@id,@name) ->
+	constructor:(@id,@name,@minLimit,@maxLimit) ->
 
 	setup: ->
 		$('#encounter').removeClass();
@@ -53,21 +57,62 @@ class Encounter
 		$('#description').html(@name)
 
 	action: ->
+
 	teardown: ->
 
+	getMinLimit: ->
+		@minLimit
+
+	getMaxLimit: ->
+		@maxLimit
+
+	nextLimit: ->
+		delta = @getMaxLimit() - @getMinLimit()
+		Math.floor(Math.random()*delta) + @getMinLimit()
+
 class Location extends Encounter
+	setup: ->
+		super
+		gameState.setLimit @nextLimit()
 
 class Monster extends Encounter
 	constructor: ->
-		super "monster", "Monster!"
+		super "monster", "Monster!", 0, 0
+
+	setup: ->
+		super
+		gameState.setLimit @nextLimit()
+
+	action: ->
+		damage = 1
+		gameState.setHealth gameState.health - damage
+
+	getMinLimit: ->
+		42
+
+	getMaxLimit: ->
+		42
 
 class City extends Encounter
 	constructor: ->
-		super "city", "City!"
+		super "city", "City!", 4, 6
 
 class Town extends Encounter
 	constructor: ->
-		super "town", "Town!"
+		super "town", "Town!", 2, 4
+
+moveToNextEncounter = ->
+	next = Math.random()
+
+	for ec in encounterChance
+		if next >= ec.value
+			nextId = ec.id
+		else
+			break
+
+	nextEncounter = encounters[nextId]
+
+	gameState.setEncounter nextEncounter
 
 class PlayerState
 	constructor: (@id,@potential,@kinetic) ->
@@ -89,21 +134,30 @@ class Moving extends PlayerState
 		super "move", "Move!", "Moving!"
 
 	action: ->
-		next = Math.random()
-
-		for ec in encounterChance
-			if next >= ec.value
-				nextId = ec.id
-			else
-				break
-
-		nextEncounter = encounters[nextId]
-
-		gameState.setEncounter nextEncounter
+		if gameState.encounter instanceof Monster
+			if (Math.random < 0.10)
+				moveToNextEncounter()
+		else if gameState.limit == 1
+			moveToNextEncounter()
+		else
+			gameState.setLimit gameState.limit-1
 
 class Fighting extends PlayerState
 	constructor: ->
 		super "fight", "Fight!", "Fighting!"
+
+	action: ->
+		if gameState.encounter instanceof Monster
+			damage = 10
+			newLimit = gameState.limit - damage
+
+			if newLimit <= 0
+				@monsterDefeated()
+			else
+				gameState.setLimit newLimit
+
+	monsterDefeated: ->
+		moveToNextEncounter()
 
 class Buying extends PlayerState
 	constructor: ->
@@ -127,24 +181,24 @@ class Resting extends PlayerState
 				newHealth = gameState.maxHealth
 			gameState.setHealth newHealth
 
+class EncounterChance
+	constructor:(@encounter,@chance) ->
+
 encounters = 
-	swamp: new Location "swamp", "Swamp!"
-	prarie: new Location "prarie", "Prarie!"
-	hills: new Location "hills", "Hills!"
-	mountains: new Location "mountains", "Mountains!"
-	desert: new Location "desert", "Desert!"
-	coastline: new Location "coastline", "Coastline!"
-	jungle: new Location "jungle", "Jungle!"
-	ruins: new Location "ruins", "Ruins!"
-	tundra: new Location "tundra", "Tundra!"
-	forest: new Location "forest", "Forest!"
-	savana: new Location "savana", "Savana!"
+	swamp: new Location "swamp", "Swamp!", 2, 8
+	prarie: new Location "prarie", "Prarie!", 2, 7
+	hills: new Location "hills", "Hills!", 2, 8
+	mountains: new Location "mountains", "Mountains!", 2, 5
+	desert: new Location "desert", "Desert!", 2, 8
+	coastline: new Location "coastline", "Coastline!", 2, 5
+	jungle: new Location "jungle", "Jungle!", 2, 8
+	ruins: new Location "ruins", "Ruins!", 2, 4
+	tundra: new Location "tundra", "Tundra!", 2, 6
+	forest: new Location "forest", "Forest!", 2, 8
+	savana: new Location "savana", "Savana!", 2, 8
 	town: new Town
 	city: new City
 	monster: new Monster
-
-class EncounterChance
-	constructor:(@encounter,@chance) ->
 
 encounterChance=[
 	{value:0.00, id:"ruins"},
@@ -177,7 +231,7 @@ gameState.setHealth 25
 gameState.setExperience 0
 gameState.setMoney 0
 gameState.setLoot 0
-gameState.setEncounter encounters.monster
+gameState.setEncounter encounters.forest
 gameState.setPlayerState playerStates.rest
 
 timerId = 0
@@ -187,7 +241,7 @@ setInterval = (delay, exp) ->
 
 setInterval 1000, ->
 	gameState.playerState.action()
-
+	gameState.encounter.action()
 
 $('#move').click ->
 	gameState.setPlayerState playerStates.move
@@ -209,3 +263,18 @@ $(document.documentElement).keypress (e) ->
 		gameState.setEncounter encounters.monster
 	if e.keyCode == 108 # l
 		gameState.setEncounter encounters.prarie
+
+# Hero's Journey
+# 1. Call to Adventure
+# 2. Refusal of the Call
+# 3. Meeting the Mentor
+# 4. Crossing the Threshold
+# 5. Road Of Trials
+# 6. Meeting Of The Goddess
+# 7. Atonement With The Father
+# 8. Apotheosis
+# 9. The Return
+
+
+
+

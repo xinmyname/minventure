@@ -35,9 +35,14 @@ h1 {
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px; }
-  #encounter #description {
-    padding: 1em;
-    text-align: center; }
+  #encounter table {
+    width: 100%; }
+  #encounter table tr td {
+    width: 15%;
+    text-align: center;
+    padding: 1em 0; }
+  #encounter table tr td + td {
+    width: 70%; }
 
 .controlRow {
   margin-bottom: 0.25em; }
