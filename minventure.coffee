@@ -32,7 +32,6 @@ class GameState
 
 	setLoot: (value) ->
 		@loot = value
-		$('#loot').html(value)
 
 	setLimit: (value) ->
 		@limit = value
@@ -47,6 +46,9 @@ class GameState
 		@playerState?.teardown()
 		@playerState = value
 		@playerState.setup()
+
+gameOver = ->
+	console.log "GAME OVER!"
 
 class Encounter
 	constructor:(@id,@name,@minLimit,@maxLimit) ->
@@ -85,7 +87,12 @@ class Monster extends Encounter
 
 	action: ->
 		damage = 1
-		gameState.setHealth gameState.health - damage
+		newHealth = gameState.health - damage
+
+		if newHealth <= 0
+			gameOver()
+		else
+			gameState.setHealth newHealth
 
 	getMinLimit: ->
 		42
