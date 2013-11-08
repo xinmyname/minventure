@@ -6,6 +6,7 @@ class GameState
 	limit: 0
 	encounter: null
 	playerState: null
+	timerId: 0
 
 	setHealth: (value) ->
 		@health = value
@@ -40,6 +41,8 @@ class GameState
 		@playerState.setup()
 
 	save: ->
+		stopGame()
+
 		state = 
 			h: @health
 			l: @level
@@ -53,16 +56,22 @@ class GameState
 
 		localStorage["minventure.state"] = stateJson
 
+		startGame()
+
 	load: ->
+		stopGame()
+
 		stateJson = localStorage["minventure.state"]
 		state = JSON.parse stateJson
+		@setEncounter encounters[state.en]
+		@setPlayerState playerStates[state.p]
 		@setHealth state.h
 		@setLevel state.l
 		@setExperience state.e
 		@setMoney state.m
-		@setLimit state.limit
-		@setEncounter encounters[state.en]
-		@setPlayerState playerStates[state.p]
+		@setLimit state.li
+
+		startGame()
 
 moveToNextEncounter = ->
 	next = Math.random()
@@ -100,13 +109,14 @@ class Moving extends PlayerState
 		super "move", "Move!", "Moving!"
 
 	action: ->
+		limit = gameState.limit - 1
 		if gameState.encounter instanceof Monster
 			if (Math.random < 0.10)
 				moveToNextEncounter()
-		else if gameState.limit == 1
+		else if limit == 0
 			moveToNextEncounter()
 		else
-			gameState.setLimit gameState.limit-1
+			gameState.setLimit limit
 
 class Fighting extends PlayerState
 	constructor: ->
@@ -197,6 +207,16 @@ class Town extends Encounter
 	constructor: ->
 		super "town", "Town!", 2, 4
 
+gameTick = ->
+	gameState.playerState.action()
+	gameState.encounter.action()
+
+startGame = ->
+	gameState.timerId = window.setInterval gameTick, 1000
+
+stopGame = ->
+	window.clearInterval gameState.timerId
+
 encounters = 
 	swamp: new Location "swamp", "Swamp!", 2, 8
 	prarie: new Location "prarie", "Prarie!", 2, 7
@@ -244,14 +264,7 @@ gameState.setMoney 0
 gameState.setEncounter encounters.forest
 gameState.setPlayerState playerStates.rest
 
-timerId = 0
-
-setInterval = (delay, exp) ->
-    timerId = window.setInterval exp, delay
-
-setInterval 1000, ->
-	gameState.playerState.action()
-	gameState.encounter.action()
+startGame()
 
 $('#move').click ->
 	gameState.setPlayerState playerStates.move
