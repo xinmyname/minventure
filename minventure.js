@@ -7,23 +7,13 @@
   GameState = (function() {
     function GameState() {}
 
-    GameState.prototype.time = 0;
-
     GameState.prototype.health = 0;
-
-    GameState.prototype.maxHealth = 0;
 
     GameState.prototype.level = 0;
 
     GameState.prototype.experience = 0;
 
     GameState.prototype.money = 0;
-
-    GameState.prototype.loot = 0;
-
-    GameState.prototype.buy = 0;
-
-    GameState.prototype.sell = 0;
 
     GameState.prototype.limit = 0;
 
@@ -53,10 +43,6 @@
       return $('#money').html(value);
     };
 
-    GameState.prototype.setLoot = function(value) {
-      return this.loot = value;
-    };
-
     GameState.prototype.setLimit = function(value) {
       this.limit = value;
       return $('#limit').html(value);
@@ -80,6 +66,36 @@
       }
       this.playerState = value;
       return this.playerState.setup();
+    };
+
+    GameState.prototype.save = function() {
+      var state, stateJson;
+
+      state = {
+        h: this.health,
+        l: this.level,
+        e: this.experience,
+        m: this.money,
+        li: this.limit,
+        en: this.encounter.id,
+        p: this.playerState.id
+      };
+      stateJson = JSON.stringify(state);
+      return localStorage["minventure.state"] = stateJson;
+    };
+
+    GameState.prototype.load = function() {
+      var state, stateJson;
+
+      stateJson = localStorage["minventure.state"];
+      state = JSON.parse(stateJson);
+      this.setHealth(state.h);
+      this.setLevel(state.l);
+      this.setExperience(state.e);
+      this.setMoney(state.m);
+      this.setLimit(state.limit);
+      this.setEncounter(encounters[state.en]);
+      return this.setPlayerState(playerStates[state.p]);
     };
 
     return GameState;
@@ -404,8 +420,6 @@
 
   gameState.setMoney(0);
 
-  gameState.setLoot(0);
-
   gameState.setEncounter(encounters.forest);
 
   gameState.setPlayerState(playerStates.rest);
@@ -441,12 +455,17 @@
     return gameState.setPlayerState(playerStates.rest);
   });
 
+  $('#save').click(function() {
+    return gameState.save();
+  });
+
+  $('#load').click(function() {
+    return gameState.load();
+  });
+
   $(document.documentElement).keypress(function(e) {
     if (e.keyCode === 109) {
-      gameState.setEncounter(encounters.monster);
-    }
-    if (e.keyCode === 108) {
-      return gameState.setEncounter(encounters.prarie);
+      return gameState.setEncounter(encounters.monster);
     }
   });
 

@@ -1,13 +1,8 @@
 class GameState
-	time: 0
 	health: 0
-	maxHealth: 0
 	level: 0
 	experience: 0
 	money: 0
-	loot: 0
-	buy: 0
-	sell: 0
 	limit: 0
 	encounter: null
 	playerState: null
@@ -30,9 +25,6 @@ class GameState
 		@money = value
 		$('#money').html(value)
 
-	setLoot: (value) ->
-		@loot = value
-
 	setLimit: (value) ->
 		@limit = value
 		$('#limit').html(value)
@@ -46,6 +38,31 @@ class GameState
 		@playerState?.teardown()
 		@playerState = value
 		@playerState.setup()
+
+	save: ->
+		state = 
+			h: @health
+			l: @level
+			e: @experience
+			m: @money
+			li: @limit
+			en: @encounter.id
+			p: @playerState.id
+
+		stateJson = JSON.stringify state
+
+		localStorage["minventure.state"] = stateJson
+
+	load: ->
+		stateJson = localStorage["minventure.state"]
+		state = JSON.parse stateJson
+		@setHealth state.h
+		@setLevel state.l
+		@setExperience state.e
+		@setMoney state.m
+		@setLimit state.limit
+		@setEncounter encounters[state.en]
+		@setPlayerState playerStates[state.p]
 
 moveToNextEncounter = ->
 	next = Math.random()
@@ -224,7 +241,6 @@ gameState.setLevel 1
 gameState.setHealth 25
 gameState.setExperience 0
 gameState.setMoney 0
-gameState.setLoot 0
 gameState.setEncounter encounters.forest
 gameState.setPlayerState playerStates.rest
 
@@ -252,11 +268,15 @@ $('#sell').click ->
 $('#rest').click ->
 	gameState.setPlayerState playerStates.rest
 
+$('#save').click ->
+	gameState.save()
+
+$('#load').click ->
+	gameState.load()
+
 $(document.documentElement).keypress (e) ->
 	if e.keyCode == 109 # m
 		gameState.setEncounter encounters.monster
-	if e.keyCode == 108 # l
-		gameState.setEncounter encounters.prarie
 
 # Hero's Journey
 # 1. Call to Adventure
