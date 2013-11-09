@@ -92,6 +92,13 @@ moveToNextEncounter = ->
 gameOver = ->
 	console.log "GAME OVER!"
 
+updateStatus = (status) ->
+
+	statusLines[0].text(statusLines[1].text())
+	statusLines[1].text(statusLines[2].text())
+	statusLines[2].text(statusLines[3].text())
+	statusLines[3].text(status)
+
 class PlayerState
 	constructor: (@id,@potential,@kinetic) ->
 
@@ -149,8 +156,6 @@ class Fighting extends PlayerState
 
 	addLoot: (monster) ->
 
-
-
 class Resting extends PlayerState
 	constructor: ->
 		super "rest", "Rest!", "Resting!"
@@ -195,16 +200,19 @@ class Location extends Encounter
 class Monster extends Encounter
 	constructor: ->
 		super "monster", "Monster!", 0, 0
+		@maxHealth = 0
 		@experience = 0
 
 	setup: ->
 		super
-		limit = @nextLimit()
-		@experience = Math.floor(limit/2)
-		gameState.setLimit @nextLimit()
+		@maxHealth = @nextLimit()
+		@experience = Math.floor(@maxHealth/2)
+		gameState.setLimit @maxHealth
 
 	action: ->
-		damage = 1
+		percent = (Math.random()*0.10 + 0.05)
+		damage = Math.floor(@maxHealth * percent)
+		updateStatus "You take #{damage} damage!"
 		newHealth = gameState.health - damage
 
 		if newHealth <= 0
@@ -271,6 +279,8 @@ encounterChance=[
 	{value:0.85, id:"monster"}
 ]
 
+statusLines=[]
+
 playerStates =
 	move: new Moving 
 	fight: new Fighting 
@@ -285,7 +295,15 @@ gameState.setMoney 0
 gameState.setEncounter encounters.forest
 gameState.setPlayerState playerStates.rest
 
-startGame()
+$ ->
+	statusLines=[
+		$('#line1'),
+		$('#line2'),
+		$('#line3'),
+		$('#line4')
+	]
+
+	startGame()
 
 $('#move').click ->
 	gameState.setPlayerState playerStates.move
