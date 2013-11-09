@@ -31,7 +31,7 @@
     GameState.prototype.setLevel = function(value) {
       this.level = value;
       $('#level').html(value);
-      this.maxHealth = Math.round(173.5 * Math.exp(0.0339 * value) - 147);
+      this.maxHealth = this.getMaxHealth();
       return $('#maxHealth').html(this.maxHealth);
     };
 
@@ -68,6 +68,10 @@
       }
       this.playerState = value;
       return this.playerState.setup();
+    };
+
+    GameState.prototype.getMaxHealth = function() {
+      return Math.round(173.5 * Math.exp(0.0339 * this.level) - 147);
     };
 
     GameState.prototype.save = function() {
@@ -205,8 +209,22 @@
     };
 
     Fighting.prototype.monsterDefeated = function() {
+      this.addExperience(gameState.encounter);
+      this.addMoney(gameState.encounter);
+      this.addLoot(gameState.encounter);
       return moveToNextEncounter();
     };
+
+    Fighting.prototype.addExperience = function(monster) {
+      var exp;
+
+      exp = gameState.experience + monster.experience;
+      return gameState.setExperience(exp);
+    };
+
+    Fighting.prototype.addMoney = function(monster) {};
+
+    Fighting.prototype.addLoot = function(monster) {};
 
     return Fighting;
 
@@ -297,10 +315,15 @@
 
     function Monster() {
       Monster.__super__.constructor.call(this, "monster", "Monster!", 0, 0);
+      this.experience = 0;
     }
 
     Monster.prototype.setup = function() {
+      var limit;
+
       Monster.__super__.setup.apply(this, arguments);
+      limit = this.nextLimit();
+      this.experience = Math.floor(limit / 2);
       return gameState.setLimit(this.nextLimit());
     };
 
@@ -317,11 +340,17 @@
     };
 
     Monster.prototype.getMinLimit = function() {
-      return 42;
+      var maxHealth;
+
+      maxHealth = gameState.getMaxHealth();
+      return maxHealth - Math.floor(maxHealth / 2.0);
     };
 
     Monster.prototype.getMaxLimit = function() {
-      return 42;
+      var maxHealth;
+
+      maxHealth = gameState.getMaxHealth();
+      return maxHealth + Math.floor(maxHealth / 2.0);
     };
 
     return Monster;

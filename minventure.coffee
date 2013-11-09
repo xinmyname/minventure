@@ -15,7 +15,7 @@ class GameState
 	setLevel: (value) ->
 		@level = value
 		$('#level').html(value)
-		@maxHealth = Math.round(173.5*Math.exp(0.0339*value)-147)
+		@maxHealth = @getMaxHealth()
 		$('#maxHealth').html(@maxHealth)
 
 	setExperience: (value) ->
@@ -39,6 +39,9 @@ class GameState
 		@playerState?.teardown()
 		@playerState = value
 		@playerState.setup()
+
+	getMaxHealth: ->
+		Math.round(173.5*Math.exp(0.0339*@level)-147)
 
 	save: ->
 		stopGame()
@@ -133,7 +136,20 @@ class Fighting extends PlayerState
 				gameState.setLimit newLimit
 
 	monsterDefeated: ->
+		@addExperience(gameState.encounter)
+		@addMoney(gameState.encounter)
+		@addLoot(gameState.encounter)
 		moveToNextEncounter()
+
+	addExperience: (monster) ->
+		exp = gameState.experience + monster.experience
+		gameState.setExperience exp
+
+	addMoney: (monster) ->
+
+	addLoot: (monster) ->
+
+
 
 class Resting extends PlayerState
 	constructor: ->
@@ -179,9 +195,12 @@ class Location extends Encounter
 class Monster extends Encounter
 	constructor: ->
 		super "monster", "Monster!", 0, 0
+		@experience = 0
 
 	setup: ->
 		super
+		limit = @nextLimit()
+		@experience = Math.floor(limit/2)
 		gameState.setLimit @nextLimit()
 
 	action: ->
@@ -194,10 +213,12 @@ class Monster extends Encounter
 			gameState.setHealth newHealth
 
 	getMinLimit: ->
-		42
+		maxHealth = gameState.getMaxHealth()
+		maxHealth - Math.floor(maxHealth/2.0)
 
 	getMaxLimit: ->
-		42
+		maxHealth = gameState.getMaxHealth()
+		maxHealth + Math.floor(maxHealth/2.0)
 
 class City extends Encounter
 	constructor: ->
@@ -243,11 +264,11 @@ encounterChance=[
 	{value:0.35, id:"jungle"},
 	{value:0.40, id:"forest"},
 	{value:0.60, id:"hills"},
-	{value:0.70, id:"prarie"},
-	{value:0.75, id:"mountains"},
-	{value:0.80, id:"tundra"},
-	{value:0.85, id:"coastline"},
-	{value:0.9, id:"monster"}
+	{value:0.65, id:"prarie"},
+	{value:0.70, id:"mountains"},
+	{value:0.75, id:"tundra"},
+	{value:0.80, id:"coastline"},
+	{value:0.85, id:"monster"}
 ]
 
 playerStates =
