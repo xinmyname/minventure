@@ -129,7 +129,9 @@
   };
 
   gameOver = function() {
-    return console.log("GAME OVER!");
+    gameState.setHealth(0);
+    updateStatus("You are dead.");
+    return stopGame();
   };
 
   updateStatus = function(status) {
@@ -180,7 +182,8 @@
 
       limit = gameState.limit - 1;
       if (gameState.encounter instanceof Monster) {
-        if (Math.random < 0.10) {
+        if (Math.random() < 0.10) {
+          updateStatus("You run away!");
           return moveToNextEncounter();
         }
       } else if (limit === 0) {
@@ -216,6 +219,7 @@
     };
 
     Fighting.prototype.monsterDefeated = function() {
+      updateStatus("You defeated the monster!");
       this.addExperience(gameState.encounter);
       this.addMoney(gameState.encounter);
       this.addLoot(gameState.encounter);
@@ -336,14 +340,16 @@
     Monster.prototype.action = function() {
       var damage, newHealth, percent;
 
-      percent = Math.random() * 0.10 + 0.05;
+      percent = Math.random() * 0.08 + 0.02;
       damage = Math.floor(this.maxHealth * percent);
-      updateStatus("You take " + damage + " damage!");
-      newHealth = gameState.health - damage;
-      if (newHealth <= 0) {
-        return gameOver();
-      } else {
-        return gameState.setHealth(newHealth);
+      if (damage > 0) {
+        updateStatus("You take " + damage + " damage!");
+        newHealth = gameState.health - damage;
+        if (newHealth <= 0) {
+          return gameOver();
+        } else {
+          return gameState.setHealth(newHealth);
+        }
       }
     };
 

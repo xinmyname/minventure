@@ -90,7 +90,9 @@ moveToNextEncounter = ->
 	gameState.setEncounter nextEncounter
 
 gameOver = ->
-	console.log "GAME OVER!"
+	gameState.setHealth 0
+	updateStatus "You are dead."
+	stopGame()
 
 updateStatus = (status) ->
 
@@ -121,7 +123,8 @@ class Moving extends PlayerState
 	action: ->
 		limit = gameState.limit - 1
 		if gameState.encounter instanceof Monster
-			if (Math.random < 0.10)
+			if (Math.random() < 0.10)
+				updateStatus "You run away!"
 				moveToNextEncounter()
 		else if limit == 0
 			moveToNextEncounter()
@@ -143,6 +146,7 @@ class Fighting extends PlayerState
 				gameState.setLimit newLimit
 
 	monsterDefeated: ->
+		updateStatus "You defeated the monster!"
 		@addExperience(gameState.encounter)
 		@addMoney(gameState.encounter)
 		@addLoot(gameState.encounter)
@@ -210,15 +214,17 @@ class Monster extends Encounter
 		gameState.setLimit @maxHealth
 
 	action: ->
-		percent = (Math.random()*0.10 + 0.05)
+		percent = (Math.random()*0.08 + 0.02)
 		damage = Math.floor(@maxHealth * percent)
-		updateStatus "You take #{damage} damage!"
-		newHealth = gameState.health - damage
 
-		if newHealth <= 0
-			gameOver()
-		else
-			gameState.setHealth newHealth
+		if damage > 0
+			updateStatus "You take #{damage} damage!"
+			newHealth = gameState.health - damage
+
+			if newHealth <= 0
+				gameOver()
+			else
+				gameState.setHealth newHealth
 
 	getMinLimit: ->
 		maxHealth = gameState.getMaxHealth()
