@@ -173,6 +173,7 @@ class Fighting extends PlayerState
 
 		if exp >= gameState.nextLevelAt
 			gameState.setLevel gameState.level + 1
+			gameState.setHealth gameState.getMaxHealth()
 			updateStatus "You gained a level!"
 			expMultiplier = Math.floor(gameState.level / 24 + 4)
 			maxExpEarned = Math.floor(monster.getMaxLimit() / 2)
@@ -237,11 +238,14 @@ class Monster extends Encounter
 		@experience = Math.floor(@maxHealth/2)
 		gameState.setLimit @maxHealth
 
+		if gameState.godMode
+			gameState.setPlayerState playerStates.fight
+
 	action: ->
 		percent = (Math.random()*0.08 + 0.02)
 		damage = Math.floor(@maxHealth * percent)
 
-		if damage > 0
+		if !gameState.godMode && damage > 0
 			updateStatus "You take #{damage} damage!"
 			newHealth = gameState.health - damage
 
@@ -249,6 +253,12 @@ class Monster extends Encounter
 				gameOver()
 			else
 				gameState.setHealth newHealth
+
+	teardown: ->
+		super
+
+		if gameState.godMode
+			gameState.setPlayerState playerStates.move
 
 	getMinLimit: ->
 		Math.floor((gameState.maxHealth/1.1)-(gameState.maxHealth/2))

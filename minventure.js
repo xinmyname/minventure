@@ -362,7 +362,10 @@
       Monster.__super__.setup.apply(this, arguments);
       this.maxHealth = this.nextLimit();
       this.experience = Math.floor(this.maxHealth / 2);
-      return gameState.setLimit(this.maxHealth);
+      gameState.setLimit(this.maxHealth);
+      if (gameState.godMode) {
+        return gameState.setPlayerState(playerStates.fight);
+      }
     };
 
     Monster.prototype.action = function() {
@@ -370,7 +373,7 @@
 
       percent = Math.random() * 0.08 + 0.02;
       damage = Math.floor(this.maxHealth * percent);
-      if (damage > 0) {
+      if (!gameState.godMode && damage > 0) {
         updateStatus("You take " + damage + " damage!");
         newHealth = gameState.health - damage;
         if (newHealth <= 0) {
@@ -378,6 +381,13 @@
         } else {
           return gameState.setHealth(newHealth);
         }
+      }
+    };
+
+    Monster.prototype.teardown = function() {
+      Monster.__super__.teardown.apply(this, arguments);
+      if (gameState.godMode) {
+        return gameState.setPlayerState(playerStates.move);
       }
     };
 
