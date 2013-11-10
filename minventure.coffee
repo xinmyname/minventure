@@ -8,6 +8,7 @@ class GameState
 	playerState: null
 	timerId: 0
 	nextLevelAt: 0
+	bounty: 0
 	godMode: false
 
 	setHealth: (value) ->
@@ -56,6 +57,9 @@ class GameState
 		else
 			$("html").removeClass "godMode"
 
+	setBounty: (value) ->
+		@bounty = value
+
 	save: ->
 		stopGame()
 
@@ -66,6 +70,7 @@ class GameState
 			m: @money
 			li: @limit
 			n: @nextLevelAt
+			b: @bounty
 			en: @encounter.id
 			p: @playerState.id
 
@@ -88,6 +93,7 @@ class GameState
 		@setMoney state.m
 		@setLimit state.li
 		@setNextLevelAt state.n
+		@setBounty state.b
 
 		startGame()
 
@@ -163,7 +169,6 @@ class Fighting extends PlayerState
 	monsterDefeated: ->
 		updateStatus "You defeated the monster!"
 		@addExperience(gameState.encounter)
-		@addMoney(gameState.encounter)
 		@addLoot(gameState.encounter)
 		moveToNextEncounter()
 
@@ -181,8 +186,6 @@ class Fighting extends PlayerState
 			updateStatus "Next level at #{nextLevelAt} experience."
 			gameState.setNextLevelAt nextLevelAt
 
-	addMoney: (monster) ->
-
 	addLoot: (monster) ->
 
 class Resting extends PlayerState
@@ -190,10 +193,11 @@ class Resting extends PlayerState
 		super "rest", "Rest!", "Resting!"
 
 	action: ->
-		if (gameState.health < gameState.maxHealth)
+		if (gameState.health < gameState.getMaxHealth())
+			healRate = Math.floor(gameState.getMaxHealth() * 0.08)
 			expMultiplier = 1
 			lootMultiplier = 1
-			addHealth = expMultiplier * lootMultiplier
+			addHealth = healRate * expMultiplier * lootMultiplier
 			newHealth = gameState.health + addHealth
 			if (newHealth > gameState.maxHealth)
 				newHealth = gameState.maxHealth
@@ -235,8 +239,11 @@ class Monster extends Encounter
 	setup: ->
 		super
 		@maxHealth = @nextLimit()
+
 		@experience = Math.floor(@maxHealth/2)
 		gameState.setLimit @maxHealth
+
+		gameState.setBounty gameState.bounty + Math.floor(@maxHealth / 10)
 
 		if gameState.godMode
 			gameState.setPlayerState playerStates.fight
@@ -270,16 +277,32 @@ class City extends Encounter
 	constructor: ->
 		super "city", "City!", 4, 6
 
+	setup: ->
+		super
+		tribute = gameState.bounty;
+		updateStatus "The magistrate gives you #{tribute} gold."
+		newMoney = gameState.money + tribute
+		gameState.setMoney newMoney
+
+		gateState.setBounty 0
+
 class Town extends Encounter
 	constructor: ->
 		super "town", "Town!", 2, 4
+
+	setup: ->
+		super
+		tribute = gameState.limit * 10;
+		updateStatus "The villagers give you #{tribute} gold."
+		newMoney = gameState.money + tribute
+		gameState.setMoney newMoney
 
 gameTick = ->
 	gameState.playerState.action()
 	gameState.encounter.action()
 
 startGame = ->
-	gameState.timerId = window.setInterval gameTick, 100
+	gameState.timerId = window.setInterval gameTick, 850
 
 stopGame = ->
 	window.clearInterval gameState.timerId

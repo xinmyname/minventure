@@ -25,6 +25,8 @@
 
     GameState.prototype.nextLevelAt = 0;
 
+    GameState.prototype.bounty = 0;
+
     GameState.prototype.godMode = false;
 
     GameState.prototype.setHealth = function(value) {
@@ -91,6 +93,10 @@
       }
     };
 
+    GameState.prototype.setBounty = function(value) {
+      return this.bounty = value;
+    };
+
     GameState.prototype.save = function() {
       var state, stateJson;
 
@@ -102,6 +108,7 @@
         m: this.money,
         li: this.limit,
         n: this.nextLevelAt,
+        b: this.bounty,
         en: this.encounter.id,
         p: this.playerState.id
       };
@@ -124,6 +131,7 @@
       this.setMoney(state.m);
       this.setLimit(state.li);
       this.setNextLevelAt(state.n);
+      this.setBounty(state.b);
       return startGame();
     };
 
@@ -240,7 +248,6 @@
     Fighting.prototype.monsterDefeated = function() {
       updateStatus("You defeated the monster!");
       this.addExperience(gameState.encounter);
-      this.addMoney(gameState.encounter);
       this.addLoot(gameState.encounter);
       return moveToNextEncounter();
     };
@@ -262,8 +269,6 @@
       }
     };
 
-    Fighting.prototype.addMoney = function(monster) {};
-
     Fighting.prototype.addLoot = function(monster) {};
 
     return Fighting;
@@ -278,12 +283,13 @@
     }
 
     Resting.prototype.action = function() {
-      var addHealth, expMultiplier, lootMultiplier, newHealth;
+      var addHealth, expMultiplier, healRate, lootMultiplier, newHealth;
 
-      if (gameState.health < gameState.maxHealth) {
+      if (gameState.health < gameState.getMaxHealth()) {
+        healRate = Math.floor(gameState.getMaxHealth() * 0.08);
         expMultiplier = 1;
         lootMultiplier = 1;
-        addHealth = expMultiplier * lootMultiplier;
+        addHealth = healRate * expMultiplier * lootMultiplier;
         newHealth = gameState.health + addHealth;
         if (newHealth > gameState.maxHealth) {
           newHealth = gameState.maxHealth;
@@ -364,6 +370,7 @@
       this.maxHealth = this.nextLimit();
       this.experience = Math.floor(this.maxHealth / 2);
       gameState.setLimit(this.maxHealth);
+      gameState.setBounty(gameState.bounty + Math.floor(this.maxHealth / 10));
       if (gameState.godMode) {
         return gameState.setPlayerState(playerStates.fight);
       }
@@ -411,6 +418,17 @@
       City.__super__.constructor.call(this, "city", "City!", 4, 6);
     }
 
+    City.prototype.setup = function() {
+      var newMoney, tribute;
+
+      City.__super__.setup.apply(this, arguments);
+      tribute = gameState.bounty;
+      updateStatus("The magistrate gives you " + tribute + " gold.");
+      newMoney = gameState.money + tribute;
+      gameState.setMoney(newMoney);
+      return gateState.setBounty(0);
+    };
+
     return City;
 
   })(Encounter);
@@ -422,6 +440,16 @@
       Town.__super__.constructor.call(this, "town", "Town!", 2, 4);
     }
 
+    Town.prototype.setup = function() {
+      var newMoney, tribute;
+
+      Town.__super__.setup.apply(this, arguments);
+      tribute = gameState.limit * 10;
+      updateStatus("The villagers give you " + tribute + " gold.");
+      newMoney = gameState.money + tribute;
+      return gameState.setMoney(newMoney);
+    };
+
     return Town;
 
   })(Encounter);
@@ -432,7 +460,7 @@
   };
 
   startGame = function() {
-    return gameState.timerId = window.setInterval(gameTick, 100);
+    return gameState.timerId = window.setInterval(gameTick, 850);
   };
 
   stopGame = function() {
