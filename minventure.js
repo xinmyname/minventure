@@ -423,10 +423,12 @@
 
       City.__super__.setup.apply(this, arguments);
       tribute = gameState.bounty;
-      updateStatus("The magistrate gives you " + tribute + " gold.");
-      newMoney = gameState.money + tribute;
-      gameState.setMoney(newMoney);
-      return gateState.setBounty(0);
+      if (tribute > 0) {
+        updateStatus("The magistrate gives you " + tribute + " gold.");
+        newMoney = gameState.money + tribute;
+        gameState.setMoney(newMoney);
+        return gameState.setBounty(0);
+      }
     };
 
     return City;
@@ -444,7 +446,7 @@
       var newMoney, tribute;
 
       Town.__super__.setup.apply(this, arguments);
-      tribute = gameState.limit * 10;
+      tribute = gameState.limit;
       updateStatus("The villagers give you " + tribute + " gold.");
       newMoney = gameState.money + tribute;
       return gameState.setMoney(newMoney);
@@ -460,7 +462,7 @@
   };
 
   startGame = function() {
-    return gameState.timerId = window.setInterval(gameTick, 850);
+    return gameState.timerId = window.setInterval(gameTick, 100);
   };
 
   stopGame = function() {
@@ -490,10 +492,10 @@
       id: "ruins"
     }, {
       value: 0.05,
-      id: "city"
+      id: "town"
     }, {
       value: 0.10,
-      id: "town"
+      id: "city"
     }, {
       value: 0.20,
       id: "swamp"

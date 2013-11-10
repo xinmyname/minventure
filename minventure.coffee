@@ -280,11 +280,13 @@ class City extends Encounter
 	setup: ->
 		super
 		tribute = gameState.bounty;
-		updateStatus "The magistrate gives you #{tribute} gold."
-		newMoney = gameState.money + tribute
-		gameState.setMoney newMoney
 
-		gateState.setBounty 0
+		if tribute > 0
+			updateStatus "The magistrate gives you #{tribute} gold."
+			newMoney = gameState.money + tribute
+			gameState.setMoney newMoney
+
+			gameState.setBounty 0
 
 class Town extends Encounter
 	constructor: ->
@@ -292,7 +294,7 @@ class Town extends Encounter
 
 	setup: ->
 		super
-		tribute = gameState.limit * 10;
+		tribute = gameState.limit;
 		updateStatus "The villagers give you #{tribute} gold."
 		newMoney = gameState.money + tribute
 		gameState.setMoney newMoney
@@ -302,7 +304,7 @@ gameTick = ->
 	gameState.encounter.action()
 
 startGame = ->
-	gameState.timerId = window.setInterval gameTick, 850
+	gameState.timerId = window.setInterval gameTick, 100
 
 stopGame = ->
 	window.clearInterval gameState.timerId
@@ -325,8 +327,8 @@ encounters =
 
 encounterChance=[
 	{value:0.00, id:"ruins"},
-	{value:0.05, id:"city"},
-	{value:0.10, id:"town"},
+	{value:0.05, id:"town"},
+	{value:0.10, id:"city"},
 	{value:0.20, id:"swamp"},
 	{value:0.25, id:"savana"},
 	{value:0.30, id:"desert"},
