@@ -8,6 +8,7 @@ class GameState
 	playerState: null
 	timerId: 0
 	nextLevelAt: 0
+	godMode: false
 
 	setHealth: (value) ->
 		@health = value
@@ -44,8 +45,16 @@ class GameState
 	getMaxHealth: ->
 		Math.round(173.5*Math.exp(0.0339*@level)-147)
 
-	setNextLevelAt: (nextLevelAt) ->
-		@nextLevelAt = nextLevelAt
+	setNextLevelAt: (value) ->
+		@nextLevelAt = value
+
+	setGodMode: (value) ->
+		@godMode = value
+
+		if @godMode
+			$("html").addClass "godMode"
+		else
+			$("html").removeClass "godMode"
 
 	save: ->
 		stopGame()
@@ -56,6 +65,7 @@ class GameState
 			e: @experience
 			m: @money
 			li: @limit
+			n: @nextLevelAt
 			en: @encounter.id
 			p: @playerState.id
 
@@ -77,6 +87,7 @@ class GameState
 		@setExperience state.e
 		@setMoney state.m
 		@setLimit state.li
+		@setNextLevelAt state.n
 
 		startGame()
 
@@ -348,6 +359,8 @@ $('#load').click ->
 $(document.documentElement).keypress (e) ->
 	if e.keyCode == 109 # m
 		gameState.setEncounter encounters.monster
+	else if e.keyCode == 103 # g
+		gameState.setGodMode !gameState.godMode
 
 # Hero's Journey
 # 1. Call to Adventure

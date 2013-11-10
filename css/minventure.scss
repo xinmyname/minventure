@@ -24,11 +24,18 @@
     border-radius:$size;
 }
 
+html {
+	height: 100%;
+}
+
 body {
 	font-family: "Helvetica Neue",Calibri;
 	font-size: 12pt;
 	margin: 0.5em;
 	overflow: hidden;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
 h1 {
@@ -232,6 +239,17 @@ input[type="range"] {
 
 #status {
 	margin-top: 0.5em
+}
+
+.godMode {
+	background: #ff0000;
+	background: -moz-linear-gradient(top,  #ff0000 0%, #ffffff 30%, #ffffff 70%, #ff0000 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff0000), color-stop(30%,#ffffff), color-stop(70%,#ffffff), color-stop(100%,#ff0000));
+	background: -webkit-linear-gradient(top,  #ff0000 0%,#ffffff 30%,#ffffff 70%,#ff0000 100%);
+	background: -o-linear-gradient(top,  #ff0000 0%,#ffffff 30%,#ffffff 70%,#ff0000 100%);
+	background: -ms-linear-gradient(top,  #ff0000 0%,#ffffff 30%,#ffffff 70%,#ff0000 100%);
+	background: linear-gradient(to bottom,  #ff0000 0%,#ffffff 30%,#ffffff 70%,#ff0000 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0004', endColorstr='#ff0000',GradientType=0 );
 }
 
 @media (min-width: 512px)

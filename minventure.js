@@ -25,6 +25,8 @@
 
     GameState.prototype.nextLevelAt = 0;
 
+    GameState.prototype.godMode = false;
+
     GameState.prototype.setHealth = function(value) {
       this.health = value;
       return $('#health').html(value);
@@ -76,8 +78,17 @@
       return Math.round(173.5 * Math.exp(0.0339 * this.level) - 147);
     };
 
-    GameState.prototype.setNextLevelAt = function(nextLevelAt) {
-      return this.nextLevelAt = nextLevelAt;
+    GameState.prototype.setNextLevelAt = function(value) {
+      return this.nextLevelAt = value;
+    };
+
+    GameState.prototype.setGodMode = function(value) {
+      this.godMode = value;
+      if (this.godMode) {
+        return $("html").addClass("godMode");
+      } else {
+        return $("html").removeClass("godMode");
+      }
     };
 
     GameState.prototype.save = function() {
@@ -90,6 +101,7 @@
         e: this.experience,
         m: this.money,
         li: this.limit,
+        n: this.nextLevelAt,
         en: this.encounter.id,
         p: this.playerState.id
       };
@@ -111,6 +123,7 @@
       this.setExperience(state.e);
       this.setMoney(state.m);
       this.setLimit(state.li);
+      this.setNextLevelAt(state.n);
       return startGame();
     };
 
@@ -538,6 +551,8 @@
   $(document.documentElement).keypress(function(e) {
     if (e.keyCode === 109) {
       return gameState.setEncounter(encounters.monster);
+    } else if (e.keyCode === 103) {
+      return gameState.setGodMode(!gameState.godMode);
     }
   });
 
