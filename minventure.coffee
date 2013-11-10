@@ -1,3 +1,13 @@
+class Loot
+	@constructor: (@id) ->
+
+	description: ->
+		"some phat loots"
+
+class LootFactory
+	create: ->
+		new Loot 0
+
 class GameState
 	health: 0
 	level: 0
@@ -273,6 +283,16 @@ class Monster extends Encounter
 	getMaxLimit: ->
 		Math.floor((gameState.maxHealth/1.5)+(gameState.maxHealth/2))
 
+class Ruins extends Encounter
+	constructor: -> 
+		super "ruins", "Ruins!", 2, 4
+
+	setup: ->
+		super
+		loot = lootFactory.create()
+		description = loot.description()
+		updateStatus "You found #{description}!"
+
 class City extends Encounter
 	constructor: ->
 		super "city", "City!", 4, 6
@@ -317,10 +337,10 @@ encounters =
 	desert: new Location "desert", "Desert!", 2, 8
 	coastline: new Location "coastline", "Coastline!", 2, 5
 	jungle: new Location "jungle", "Jungle!", 2, 8
-	ruins: new Location "ruins", "Ruins!", 2, 4
 	tundra: new Location "tundra", "Tundra!", 2, 6
 	forest: new Location "forest", "Forest!", 2, 8
 	savana: new Location "savana", "Savana!", 2, 8
+	ruins: new Ruins
 	town: new Town
 	city: new City
 	monster: new Monster
@@ -349,6 +369,8 @@ playerStates =
 	fight: new Fighting 
 	rest: new Resting 
 
+lootFactory = new LootFactory
+
 gameState = new GameState
 
 gameState.setLevel 1
@@ -358,7 +380,6 @@ gameState.setMoney 0
 gameState.setNextLevelAt 72
 gameState.setEncounter encounters.forest
 gameState.setPlayerState playerStates.rest
-
 
 $ ->
 	statusLines=[
