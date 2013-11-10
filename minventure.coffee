@@ -7,6 +7,7 @@ class GameState
 	encounter: null
 	playerState: null
 	timerId: 0
+	nextLevelAt: 0
 
 	setHealth: (value) ->
 		@health = value
@@ -42,6 +43,9 @@ class GameState
 
 	getMaxHealth: ->
 		Math.round(173.5*Math.exp(0.0339*@level)-147)
+
+	setNextLevelAt: (nextLevelAt) ->
+		@nextLevelAt = nextLevelAt
 
 	save: ->
 		stopGame()
@@ -137,7 +141,7 @@ class Fighting extends PlayerState
 
 	action: ->
 		if gameState.encounter instanceof Monster
-			damage = 10
+			damage = Math.floor(gameState.maxHealth*(0.3 + (Math.random() * 0.10)))
 			newLimit = gameState.limit - damage
 
 			if newLimit <= 0
@@ -155,6 +159,15 @@ class Fighting extends PlayerState
 	addExperience: (monster) ->
 		exp = gameState.experience + monster.experience
 		gameState.setExperience exp
+
+		if exp >= gameState.nextLevelAt
+			gameState.setLevel gameState.level + 1
+			updateStatus "You gained a level!"
+			expMultiplier = Math.floor(gameState.level / 24 + 4)
+			maxExpEarned = Math.floor(monster.getMaxLimit() / 2)
+			nextLevelAt = Math.floor(gameState.nextLevelAt + (maxExpEarned * expMultiplier))
+			updateStatus "Next level at #{nextLevelAt} experience."
+			gameState.setNextLevelAt nextLevelAt
 
 	addMoney: (monster) ->
 
@@ -227,12 +240,10 @@ class Monster extends Encounter
 				gameState.setHealth newHealth
 
 	getMinLimit: ->
-		maxHealth = gameState.getMaxHealth()
-		maxHealth - Math.floor(maxHealth/2.0)
+		Math.floor((gameState.maxHealth/1.1)-(gameState.maxHealth/2))
 
 	getMaxLimit: ->
-		maxHealth = gameState.getMaxHealth()
-		maxHealth + Math.floor(maxHealth/2.0)
+		Math.floor((gameState.maxHealth/1.5)+(gameState.maxHealth/2))
 
 class City extends Encounter
 	constructor: ->
@@ -247,7 +258,7 @@ gameTick = ->
 	gameState.encounter.action()
 
 startGame = ->
-	gameState.timerId = window.setInterval gameTick, 1000
+	gameState.timerId = window.setInterval gameTick, 750
 
 stopGame = ->
 	window.clearInterval gameState.timerId
@@ -298,8 +309,10 @@ gameState.setLevel 1
 gameState.setHealth 25
 gameState.setExperience 0
 gameState.setMoney 0
+gameState.setNextLevelAt 72
 gameState.setEncounter encounters.forest
 gameState.setPlayerState playerStates.rest
+
 
 $ ->
 	statusLines=[

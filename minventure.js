@@ -23,6 +23,8 @@
 
     GameState.prototype.timerId = 0;
 
+    GameState.prototype.nextLevelAt = 0;
+
     GameState.prototype.setHealth = function(value) {
       this.health = value;
       return $('#health').html(value);
@@ -72,6 +74,10 @@
 
     GameState.prototype.getMaxHealth = function() {
       return Math.round(173.5 * Math.exp(0.0339 * this.level) - 147);
+    };
+
+    GameState.prototype.setNextLevelAt = function(nextLevelAt) {
+      return this.nextLevelAt = nextLevelAt;
     };
 
     GameState.prototype.save = function() {
@@ -208,7 +214,7 @@
       var damage, newLimit;
 
       if (gameState.encounter instanceof Monster) {
-        damage = 10;
+        damage = Math.floor(gameState.maxHealth * (0.3 + (Math.random() * 0.10)));
         newLimit = gameState.limit - damage;
         if (newLimit <= 0) {
           return this.monsterDefeated();
@@ -227,10 +233,19 @@
     };
 
     Fighting.prototype.addExperience = function(monster) {
-      var exp;
+      var exp, expMultiplier, maxExpEarned, nextLevelAt;
 
       exp = gameState.experience + monster.experience;
-      return gameState.setExperience(exp);
+      gameState.setExperience(exp);
+      if (exp >= gameState.nextLevelAt) {
+        gameState.setLevel(gameState.level + 1);
+        updateStatus("You gained a level!");
+        expMultiplier = Math.floor(gameState.level / 24 + 4);
+        maxExpEarned = Math.floor(monster.getMaxLimit() / 2);
+        nextLevelAt = Math.floor(gameState.nextLevelAt + (maxExpEarned * expMultiplier));
+        updateStatus("Next level at " + nextLevelAt + " experience.");
+        return gameState.setNextLevelAt(nextLevelAt);
+      }
     };
 
     Fighting.prototype.addMoney = function(monster) {};
@@ -354,17 +369,11 @@
     };
 
     Monster.prototype.getMinLimit = function() {
-      var maxHealth;
-
-      maxHealth = gameState.getMaxHealth();
-      return maxHealth - Math.floor(maxHealth / 2.0);
+      return Math.floor((gameState.maxHealth / 1.1) - (gameState.maxHealth / 2));
     };
 
     Monster.prototype.getMaxLimit = function() {
-      var maxHealth;
-
-      maxHealth = gameState.getMaxHealth();
-      return maxHealth + Math.floor(maxHealth / 2.0);
+      return Math.floor((gameState.maxHealth / 1.5) + (gameState.maxHealth / 2));
     };
 
     return Monster;
@@ -399,7 +408,7 @@
   };
 
   startGame = function() {
-    return gameState.timerId = window.setInterval(gameTick, 1000);
+    return gameState.timerId = window.setInterval(gameTick, 750);
   };
 
   stopGame = function() {
@@ -486,6 +495,8 @@
   gameState.setExperience(0);
 
   gameState.setMoney(0);
+
+  gameState.setNextLevelAt(72);
 
   gameState.setEncounter(encounters.forest);
 
