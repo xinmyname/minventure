@@ -206,6 +206,7 @@ class Encounter
 		$('#encounter').removeClass();
 		$('#encounter').addClass(@id)
 		$('#description').html(@name)
+		gameState.setLimit @nextLimit()
 
 	action: ->
 
@@ -224,7 +225,6 @@ class Encounter
 class Location extends Encounter
 	setup: ->
 		super
-		gameState.setLimit @nextLimit()
 
 class Monster extends Encounter
 	constructor: ->
@@ -279,7 +279,7 @@ gameTick = ->
 	gameState.encounter.action()
 
 startGame = ->
-	gameState.timerId = window.setInterval gameTick, 750
+	gameState.timerId = window.setInterval gameTick, 100
 
 stopGame = ->
 	window.clearInterval gameState.timerId

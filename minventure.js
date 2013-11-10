@@ -252,6 +252,7 @@
       gameState.setExperience(exp);
       if (exp >= gameState.nextLevelAt) {
         gameState.setLevel(gameState.level + 1);
+        gameState.setHealth(gameState.getMaxHealth());
         updateStatus("You gained a level!");
         expMultiplier = Math.floor(gameState.level / 24 + 4);
         maxExpEarned = Math.floor(monster.getMaxLimit() / 2);
@@ -306,7 +307,8 @@
     Encounter.prototype.setup = function() {
       $('#encounter').removeClass();
       $('#encounter').addClass(this.id);
-      return $('#description').html(this.name);
+      $('#description').html(this.name);
+      return gameState.setLimit(this.nextLimit());
     };
 
     Encounter.prototype.action = function() {};
@@ -341,8 +343,7 @@
     }
 
     Location.prototype.setup = function() {
-      Location.__super__.setup.apply(this, arguments);
-      return gameState.setLimit(this.nextLimit());
+      return Location.__super__.setup.apply(this, arguments);
     };
 
     return Location;
@@ -431,7 +432,7 @@
   };
 
   startGame = function() {
-    return gameState.timerId = window.setInterval(gameTick, 750);
+    return gameState.timerId = window.setInterval(gameTick, 100);
   };
 
   stopGame = function() {
