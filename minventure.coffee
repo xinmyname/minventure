@@ -5,6 +5,25 @@ class LootFactory
 	create: ->
 		new Loot 0, "phat loot", 1
 
+		# Map
+		# Scroll
+		# Ring
+		# Rod
+		# Wand
+		# Armor
+		# Sword
+		# Staff 
+		# Bow
+		# Necklace
+		# Boots
+		# Gauntlets
+		# Helmet
+		# Shield
+		# Arrow
+		# Bolt
+		#
+
+
 class GameState
 	health: 0
 	level: 0
@@ -207,7 +226,7 @@ class Resting extends PlayerState
 	action: ->
 		if gameState.encounter instanceof Monster
 			return 
-			
+
 		if (gameState.health < gameState.getMaxHealth())
 			healRate = Math.floor(gameState.getMaxHealth() * 0.08)
 			expMultiplier = 1
