@@ -191,6 +191,7 @@ Material=
 	Silver
 	Gold
 	Quartz
+	Glass
 
 Topic=
 	Philosophy
@@ -235,9 +236,16 @@ Map
 Rod
 Staff 
 
-Armor
 Sword
+Axe
+Dagger
+Mace
 Bow
+Battleaxe
+Crossbow
+
+
+Armor
 Boots
 Gauntlets
 Helmet
@@ -248,7 +256,4 @@ Bolt
 
 Ore
 
-Axe
-Dagger
-Mace
 
