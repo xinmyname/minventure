@@ -1,12 +1,9 @@
 class Loot
-	@constructor: (@id) ->
-
-	description: ->
-		"some phat loots"
+	@constructor: (@id,@description,@quantity) ->
 
 class LootFactory
 	create: ->
-		new Loot 0
+		new Loot 0, "phat loot", 1
 
 class GameState
 	health: 0
@@ -179,6 +176,7 @@ class Fighting extends PlayerState
 	monsterDefeated: ->
 		updateStatus "You defeated the monster!"
 		@addExperience(gameState.encounter)
+		@addBounty(gameState.encounter)
 		@addLoot(gameState.encounter)
 		moveToNextEncounter()
 
@@ -198,11 +196,18 @@ class Fighting extends PlayerState
 
 	addLoot: (monster) ->
 
+	addBounty: (monster) ->
+		gameState.setBounty gameState.bounty + Math.floor(monster.maxHealth / 10)
+
+
 class Resting extends PlayerState
 	constructor: ->
 		super "rest", "Rest!", "Resting!"
 
 	action: ->
+		if gameState.encounter instanceof Monster
+			return 
+			
 		if (gameState.health < gameState.getMaxHealth())
 			healRate = Math.floor(gameState.getMaxHealth() * 0.08)
 			expMultiplier = 1
@@ -252,8 +257,6 @@ class Monster extends Encounter
 
 		@experience = Math.floor(@maxHealth/2)
 		gameState.setLimit @maxHealth
-
-		gameState.setBounty gameState.bounty + Math.floor(@maxHealth / 10)
 
 		if gameState.godMode
 			gameState.setPlayerState playerStates.fight
