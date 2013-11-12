@@ -1,0 +1,342 @@
+Bag of Holding (Everything)
+
+Plurals!!
+
+------------------------
+
+	?{Weight} ?[{Race}|{Material}] [^Dagger|^Knife|^Axe|^Short Sword|^Broadsword|^Long Sword|^Katana|^Saber|^Club|^Mace|^Morning Star|^Flail|^Quarterstaff|^Polearm|^Spear|^Bow|^Crossbow]
+	?{Aspect} ?{Race} {Mail} [^Armor|Pair of Gauntlets|^Helm|Pair of Boots]
+	?{Aspect} ?{Race} {Material} ^Shield
+	{Color} Monster [^Hide|^Fur|^Tusk|^Horns|Teeth|Bones]
+	?{Weight} {Metal} [^Saw|^Axe|Scissors|^Hammer|^Wrench|Pliers]
+	^Scroll of {Characteristic}
+	{Metal} ^Wand of {Characteristic}
+	{Color} ^Potion of {Characteristic}
+	{Metal} ^Amulet
+	?{Metal} ^Amulet of {Characteristic}
+	{Gem} ^Amulet
+	{Gem} ^Amulet of {Characteristic}
+	Amulet of Yendor
+	{Metal} ^Ring
+	?{Metal} ^Ring of {Characteristic}
+	{Gem} ^Ring
+	{Gem} ^Ring of {Characteristic}
+	?{Gem} Encrusted {Metal} ^Ring
+	?{Gem} Encrusted ?{Metal} ^Ring of {Characteristic}
+	?{Weight} {Metal} ^Bracelet
+	?{Weight} ?{Metal} ^Bracelet of {Characteristic}
+	?{Gem} Encrusted {Metal} ^Bracelet
+	?{Gem} Encrusted ?{Metal} ^Bracelet of {Characteristic}
+	?{Weight} {Metal} ^Necklace
+	?{Weight} ?{Metal} ^Necklace of {Characteristic}
+	?{Gem} Encrusted {Metal} ^Necklace
+	?{Gem} Encrusted ?{Metal} ^Necklace of {Characteristic}
+	{Material} ^Rod
+	{Material} ^Staff 
+	{Gem} Encrusted {Material} ^Rod
+	{Gem} Encrusted {Material} ^Staff 
+	?{Aspect} {Material} ^Key
+	?{Aspect} {Material} ^Arrow
+	?{Aspect} {Material} ^Bolt
+	{Size} ?{Aspect} {Color} ^Gem
+	{MetalElement} Ore
+	?{Size} ?{Aspect} {Color} [^Shirt|Trousers|Shorts|Capris|^Skirt|^Robe|^Hood|Gloves|^Dress|^Jacket|^Vest|Pajamas|^Scarf|^Coat|^Cap|^Cape|^Mask|^Headband]
+	?{Size} ?{Color} ^Book of {Topic}
+	?{Length} ?{Color} ^Book of {Topic}
+	?{Weight} ?{Color} ^Book of {Topic}
+	?{Aspect} {Material} [^Fork|^Spoon|^Knife]
+
+------------------------
+
+Knife:Knives
+Hide:Hides
+
+
+
+
+
+
+
+
+
+
+
+
+# Weapon
+	?{Weight} ?[{Race}|{Material}] [Dagger|Knife|Axe|Short Sword|Broadsword|Long Sword|Katana|Saber|Club|Mace|Morning Star|Flail|Quarterstaff|Polearm|Spear|Bow|Crossbow]
+
+# Armor
+	?{Aspect} ?{Race} {Mail} [Armor|Gauntlets|Helm|Boots]
+	?{Aspect} ?{Race} {Material} Shield
+
+# Monster Part
+	{Color} Monster [Hide|Fur|Tusk|Horns|Teeth|Bones]
+
+# Tool
+	?{Weight} {Metal} [Saw|Axe|Scissors|Hammer|Wrench|Pliers]
+
+# Scroll
+	Scroll of {Characteristic}
+
+# Wand
+	{Metal} Wand of {Characteristic}
+
+# Potion
+	{Color} Potion of {Characteristic}
+
+# Amulet
+	{Metal} Amulet
+	?{Metal} Amulet of {Characteristic}
+	{Gem} Amulet
+	{Gem} Amulet of {Characteristic}
+	Amulet of Yendor
+
+# Ring
+	{Metal} Ring
+	?{Metal} Ring of {Characteristic}
+	{Gem} Ring
+	{Gem} Ring of {Characteristic}
+	?{Gem} Encrusted {Metal} Ring
+	?{Gem} Encrusted ?{Metal} Ring of {Characteristic}
+
+# Bracelet
+	?{Weight} {Metal} Bracelet
+	?{Weight} ?{Metal} Bracelet of {Characteristic}
+	?{Gem} Encrusted {Metal} Bracelet
+	?{Gem} Encrusted ?{Metal} Bracelet of {Characteristic}
+
+# Necklace
+	?{Weight} {Metal} Necklace
+	?{Weight} ?{Metal} Necklace of {Characteristic}
+	?{Gem} Encrusted {Metal} Necklace
+	?{Gem} Encrusted ?{Metal} Necklace of {Characteristic}
+
+# Staves
+	{Material} Rod
+	{Material} Staff 
+	{Gem} Encrusted {Material} Rod
+	{Gem} Encrusted {Material} Staff 
+
+Key:
+	?{Aspect} {Material} Key
+
+Ammunition:
+	?{Aspect} {Material} Arrow
+	?{Aspect} {Material} Bolt
+
+Gemstone:
+	{Size} ?{Aspect} {Color} Gem
+
+Ore:
+	{MetalElement} Ore
+
+Clothes:
+	?{Size} ?{Aspect} {Color} [Shirt|Trousers|Shorts|Capris|Skirt|Robe|Hood|Gloves|Dress|Jacket|Vest|Pajamas|Scarf|Coat|Cap|Cape|Mask|Headband]
+
+Book:
+	?{Size} ?{Color} Book of {Topic}
+	?{Length} ?{Color} Book of {Topic}
+	?{Weight} ?{Color} Book of {Topic}
+
+Silverware:
+	?{Aspect} {Material} [Fork|Spoon|Knife]
+
+Race=
+	Elven
+	Orcish
+	Dwarven
+	Gnomish
+	Demonic	
+	Undead
+
+Aspect=
+	Shimmering
+	Sparkling
+	Glittering
+	Incandescent
+	Glowing
+	Dirty
+	Dingy
+	Shabby
+	Faded
+	Bright
+	Flawless
+	Translucent
+	Cloudy
+
+Characteristic=
+	Healing
+	Pain
+	Agony
+	Hunger
+	Strength
+	Agility
+	Stamina
+	Intellect
+	Teleportation
+	Protection
+	Invisibility
+	Speed
+	Slowness
+	Heaviness
+	Lightness
+	Blundering
+	Clumsiness
+	Dexterity
+	Sleepiness
+	Hate
+	Amore
+	Vigor
+	Itching
+	Accuracy
+	Cowardice
+	Inebriation
+	Sobriety
+	Endurance
+	Persuasion
+	Polymorphism
+	Blindness
+
+Gem=
+	Ruby
+	Diamond
+	Quartz
+	Emerald
+	Jade
+	Opal
+	Onyx
+	Pearl
+	Sapphire
+	Topaz
+	Turquoise
+	Cubit Zirconia
+
+Length=
+	Short
+	Medium
+	Long
+
+Size=
+	Very Small
+	Small
+	Medium
+	Large
+	Extra Large
+	Extremely Large
+
+Weight=
+	Light
+	Heavy
+
+Color=
+	White
+	Azure
+	Blue
+	Aquamarine
+	Crimson
+	Red
+	Brown
+	Golden
+	Green
+	Gray
+	Lavendar
+	Pink
+	Indigo
+	Green
+	Cream
+	Eggshell
+	Beige
+	Ecru
+	Turquoise
+	Tan
+	Teal
+	Yellow
+	Purple
+	Magenta
+	Cornflower Blue
+
+MetalElement=
+	Iron
+	Silver
+	Gold
+	Platinum
+	Copper
+	Nickel
+	Tungsten
+	Palladium
+	Tin
+	Unobtainium
+
+Metal=
+	Iron
+	Silver
+	Gold
+	Platinum
+	Copper
+	Steel
+	Brass
+	Nickel
+	Tungsten
+	Palladium
+	Tin
+	Bronze
+	Unobtainium
+
+Material=
+	Wooden
+	Copper
+	Brass
+	Bronze
+	Silver
+	Gold
+	Quartz
+	Glass
+	Rubber
+	Bone
+
+Topic=
+	Philosophy
+	Metaphysics
+	Magic
+	Animals
+	Plants
+	Mushrooms
+	Insects
+	Machines
+	Mathematics
+	Statistics
+	Logic
+	Geology
+	Astronomy
+	Meteorology
+	Alchemy
+	History
+	The Dead
+	Business Administration
+	Law
+	Medicene
+	Herbs
+	Spices
+	Herbs and Spices
+	Illustrated Recipes
+	Art
+	Architecture
+	Mystery
+	Known Felons
+	Known Time Travelers
+	Kings
+	Queens
+	Gardening
+	Engineering
+	Monsters
+	Wizardry
+
+Mail=
+	Fur
+	Leather
+	Bone
+	Scale Mail
+	Plate Mail
+	Chain Mail
+	Banded Mail
+	Bone
