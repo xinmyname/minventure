@@ -1,5 +1,5 @@
 class Loot
-	@constructor: (@id,@description,@quantity) ->
+	constructor: (@id,@description,@quantity) ->
 
 class LootFactory
 	create: ->
