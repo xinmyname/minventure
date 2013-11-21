@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09438699-9b11-4835-87da-cc2590b73b53" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/andy.xml" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/app.coffee" afterPath="$PROJECT_DIR$/server.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.jade" afterPath="$PROJECT_DIR$/views/index.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/minventure.coffee" afterPath="$PROJECT_DIR$/assets/js/minventure.coffee" />
@@ -29,10 +30,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="server.coffee" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="server.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+            <state line="17" column="0" selection-start="368" selection-end="368" vertical-scroll-proportion="0.47611204" vertical-offset="0" max-vertical-offset="607">
               <folding />
             </state>
           </provider>
@@ -47,10 +48,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jade" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.jade" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/index.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="37" selection-start="817" selection-end="817" vertical-scroll-proportion="0.5601318" vertical-offset="0" max-vertical-offset="1190">
+            <state line="20" column="37" selection-start="817" selection-end="817" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
               <folding />
             </state>
           </provider>
@@ -518,13 +519,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/minventure.less">
       <provider selected="true" editor-type-id="text-editor">
         <state line="238" column="0" selection-start="4254" selection-end="4254" vertical-scroll-proportion="0.20774648" vertical-offset="3928" max-vertical-offset="5304">
@@ -541,7 +535,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="37" selection-start="817" selection-end="817" vertical-scroll-proportion="0.5601318" vertical-offset="0" max-vertical-offset="1190">
+        <state line="20" column="37" selection-start="817" selection-end="817" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="368" selection-end="368" vertical-scroll-proportion="0.47611204" vertical-offset="0" max-vertical-offset="607">
           <folding />
         </state>
       </provider>
