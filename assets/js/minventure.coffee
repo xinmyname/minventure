@@ -327,7 +327,7 @@ gameTick = ->
   gameState.encounter.action()
 
 startGame = ->
-  gameState.timerId = window.setInterval gameTick, 100
+  gameState.timerId = window.setInterval gameTick, 800
 
 stopGame = ->
   window.clearInterval gameState.timerId
