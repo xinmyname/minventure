@@ -11,25 +11,53 @@ class Loot
       @singular
 
 class Fragment
-  constructor: ->
-    @subfragments = []
+  constructor: (type) ->
+    @type = type
+    @parent = null
+    @children = []
+    @text = ""
 
-  render: (plural) ->
+  addChild: (child) ->
+    child.parent = this
+    @children.push child
 
-  addFragment: (fragment) ->
-    @subfragments.push fragment
+  addCharacter: (ch) ->
+    @text = @text.concat ch
+
+  debug: ->
+    s = ""
+    p = @parent
+    while p != null
+      s = s.concat "  "
+      p = p.parent
+
+    console.log "#{s}#{@type}: #{@text}"
+
+    child.debug() for child in @children
 
 class OptionalFragment extends Fragment
+  constructor: ->
+    super "Optional"
 
 class LookupFragment extends Fragment
+  constructor: ->
+    super "Lookup"
 
 class PluralFragment extends Fragment
+  constructor: ->
+    super "Plural"
 
 class TextFragment extends Fragment
+  constructor: ->
+    super "Text"
 
 class ListFragment extends Fragment
+  constructor: ->
+    super "List"
 
 class SelectFragment extends Fragment
+  constructor: ->
+    super "Select"
 
   ###
 
@@ -107,46 +135,91 @@ class LootFactory
     "?{Aspect} {Material} [^Fork|^Spoon|^Knife]",
   ]
 
+  reText = /[A-Za-z0-9]/
+
   create: ->
     template = _templates[Math.floor(Math.random() * _templates.length)]
-    fragmentList = @parseTemplate template
+    fragmentList = new FragmentList
+    @parseFragment fragmentList, template, 0
 
     singular = fragmentList.render false
     plural = fragmentList.render true
 
     new Loot(singular, plural, 1)
 
-  parseTemplate: (template) ->
-    master = new ListFragment()
-    parent = master
-
-    p = 0
+  parseFragment: (parent, template, p) ->
 
     while p < template.length
       c = template.charAt p
 
       switch c
-        when '?' then parent.addFragment new OptionalFragment()
+        when '?' then parent.addChild new OptionalFragment()
         when '{' then p = @parseLookup parent, template, p
         when '[' then p = @parseSelect parent, template, p
         when '^' then p = @parsePlural parent, template, p
         when ' ' then p = p + 1
         else p = @parseText parent, template, p
 
-      console.log c
-
       p++
 
-    master
+    p
 
   parseLookup: (parent, template, p) ->
+    fragment = new LookupFragment()
+
+    p++
+
+    while true
+      ch = template.charAt p
+      if reText.exec(ch) == null
+        break
+      fragment.addCharacter ch
+      p++
+
+    parent.addChild fragment
+
+    ++p
+
   parseSelect: (parent, template, p) ->
+
   parsePlural: (parent, template, p) ->
+    fragment = new PluralFragment
+
+    p++
+
+    while true
+      ch = template.charAt p
+      if reText.exec(ch) == null
+        break
+      fragment.addCharacter ch
+      p++
+
+    parent.addChild fragment
+
+    p
+
+
   parseText: (parent, template, p) ->
+    fragment = new TextFragment
+
+    while true
+      ch = template.charAt p
+      if reText.exec(ch) == null
+        break
+      fragment.addCharacter ch
+      p++
+
+    parent.addChild fragment
+
+    p
 
 factory = new LootFactory()
 
-loot = factory.create()
+list = new ListFragment()
+factory.parseFragment list, "?{Gem} Encrusted {Metal} ^Ring", 0
 
-console.log loot.description
+list.debug()
+
+# loot = factory.create()
+# console.log loot.description
 
