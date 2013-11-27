@@ -3,12 +3,9 @@ app = express()
 
 app.use require('connect-assets')()
 
-app.set 'view options', { layout: false }
-
-app.get '/', (req,res) ->
-    res.render 'index.jade', { pageTitle: 'minventure!' }
-
+app.use '/', express.static __dirname + '/public'
 app.use '/lib', express.static __dirname + '/bower_components'
+app.use '/src', express.static __dirname + '/src'
 
 port = process.env.PORT || 1337
 

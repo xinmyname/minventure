@@ -1,0 +1,111 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/public/main.js" />
+        <item url="file://$PROJECT_DIR$/public/convert.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/src/coffee/convert.js" />
+      <root url="file://$PROJECT_DIR$/src/coffee/main.js" />
+      <root url="file://$PROJECT_DIR$/public/dep-graph.js" />
+      <root url="file://$PROJECT_DIR$/public/a.js" />
+      <root url="file://$PROJECT_DIR$/public/integration.js" />
+      <root url="file://$PROJECT_DIR$/public/b.js" />
+      <root url="file://$PROJECT_DIR$/public/cache.js" />
+      <root url="file://$PROJECT_DIR$/public/mocha.js" />
+      <root url="file://$PROJECT_DIR$/public/test.js" />
+      <root url="file://$PROJECT_DIR$/public/c.js" />
+      <root url="file://$PROJECT_DIR$/public/unit.js" />
+      <root url="file://$PROJECT_DIR$/public/codependent.js" />
+      <root url="file://$PROJECT_DIR$/public/hobbits.js" />
+      <root url="file://$PROJECT_DIR$/public/zappa.js" />
+      <root url="file://$PROJECT_DIR$/public/x.js" />
+      <root url="file://$PROJECT_DIR$/public/mork.js" />
+      <root url="file://$PROJECT_DIR$/public/z.js" />
+      <root url="file://$PROJECT_DIR$/public/script.js" />
+      <root url="file://$PROJECT_DIR$/public/frodo.js" />
+      <root url="file://$PROJECT_DIR$/public/dependent.js" />
+      <root url="file://$PROJECT_DIR$/public/legolas.js" />
+      <root url="file://$PROJECT_DIR$/public/evil.js" />
+      <root url="file://$PROJECT_DIR$/public/poly.js" />
+      <root url="file://$PROJECT_DIR$/public/texas.js" />
+      <root url="file://$PROJECT_DIR$/public/yang.js" />
+      <root url="file://$PROJECT_DIR$/public/assets.js" />
+      <root url="file://$PROJECT_DIR$/public/1.2.3.js" />
+      <root url="file://$PROJECT_DIR$/public/alpha.js" />
+      <root url="file://$PROJECT_DIR$/public/trilogy.js" />
+      <root url="file://$PROJECT_DIR$/public/RemoteIntegration.js" />
+      <root url="file://$PROJECT_DIR$/public/AbsoluteIntegration.js" />
+      <root url="file://$PROJECT_DIR$/public/CdnIntegration.js" />
+      <root url="file://$PROJECT_DIR$/public/ProductionIntegration.js" />
+      <root url="file://$PROJECT_DIR$/public/BenchmarkStatic.js" />
+      <root url="file://$PROJECT_DIR$/public/DevelopmentIntegration.js" />
+      <root url="file://$PROJECT_DIR$/public/BenchmarkDynamic.js" />
+      <root url="file://$PROJECT_DIR$/public/snockets.js" />
+      <root url="file://$PROJECT_DIR$/public/needs-evil.js" />
+      <root url="file://$PROJECT_DIR$/public/horseAndCarriage.js" />
+      <root url="file://$PROJECT_DIR$/public/tree-dependent.js" />
+      <root url="file://$PROJECT_DIR$/public/edge.js" />
+      <root url="file://$PROJECT_DIR$/public/chained-dependent.js" />
+      <root url="file://$PROJECT_DIR$/public/center.js" />
+      <root url="file://$PROJECT_DIR$/public/coffee-dependency.js" />
+      <root url="file://$PROJECT_DIR$/public/dep-graph.js" />
+      <root url="file://$PROJECT_DIR$/public/a.js" />
+      <root url="file://$PROJECT_DIR$/public/integration.js" />
+      <root url="file://$PROJECT_DIR$/public/b.js" />
+      <root url="file://$PROJECT_DIR$/public/cache.js" />
+      <root url="file://$PROJECT_DIR$/public/mocha.js" />
+      <root url="file://$PROJECT_DIR$/public/test.js" />
+      <root url="file://$PROJECT_DIR$/public/c.js" />
+      <root url="file://$PROJECT_DIR$/public/unit.js" />
+      <root url="file://$PROJECT_DIR$/public/codependent.js" />
+      <root url="file://$PROJECT_DIR$/public/hobbits.js" />
+      <root url="file://$PROJECT_DIR$/public/zappa.js" />
+      <root url="file://$PROJECT_DIR$/public/x.js" />
+      <root url="file://$PROJECT_DIR$/public/mork.js" />
+      <root url="file://$PROJECT_DIR$/public/z.js" />
+      <root url="file://$PROJECT_DIR$/public/script.js" />
+      <root url="file://$PROJECT_DIR$/public/frodo.js" />
+      <root url="file://$PROJECT_DIR$/public/dependent.js" />
+      <root url="file://$PROJECT_DIR$/public/legolas.js" />
+      <root url="file://$PROJECT_DIR$/public/evil.js" />
+      <root url="file://$PROJECT_DIR$/public/poly.js" />
+      <root url="file://$PROJECT_DIR$/public/texas.js" />
+      <root url="file://$PROJECT_DIR$/public/yang.js" />
+      <root url="file://$PROJECT_DIR$/public/assets.js" />
+      <root url="file://$PROJECT_DIR$/public/1.2.3.js" />
+      <root url="file://$PROJECT_DIR$/public/alpha.js" />
+      <root url="file://$PROJECT_DIR$/public/trilogy.js" />
+      <root url="file://$PROJECT_DIR$/public/RemoteIntegration.js" />
+      <root url="file://$PROJECT_DIR$/public/AbsoluteIntegration.js" />
+      <root url="file://$PROJECT_DIR$/public/CdnIntegration.js" />
+      <root url="file://$PROJECT_DIR$/public/ProductionIntegration.js" />
+      <root url="file://$PROJECT_DIR$/public/BenchmarkStatic.js" />
+      <root url="file://$PROJECT_DIR$/public/DevelopmentIntegration.js" />
+      <root url="file://$PROJECT_DIR$/public/BenchmarkDynamic.js" />
+      <root url="file://$PROJECT_DIR$/public/snockets.js" />
+      <root url="file://$PROJECT_DIR$/public/needs-evil.js" />
+      <root url="file://$PROJECT_DIR$/public/horseAndCarriage.js" />
+      <root url="file://$PROJECT_DIR$/public/tree-dependent.js" />
+      <root url="file://$PROJECT_DIR$/public/edge.js" />
+      <root url="file://$PROJECT_DIR$/public/chained-dependent.js" />
+      <root url="file://$PROJECT_DIR$/public/center.js" />
+      <root url="file://$PROJECT_DIR$/public/coffee-dependency.js" />
+      <root url="file://$PROJECT_DIR$/public/index.js" />
+      <root url="file://$PROJECT_DIR$/public/server.js" />
+      <root url="file://$PROJECT_DIR$/public/server.js" />
+      <root url="file://$PROJECT_DIR$/public/index.js" />
+      <root url="file://$PROJECT_DIR$/public/test-main.js" />
+      <root url="file://$PROJECT_DIR$/public/convertSpec.js" />
+      <root url="file://$PROJECT_DIR$/public/karma.conf.js" />
+      <root url="file://$PROJECT_DIR$/public/test-main.js" />
+      <root url="file://$PROJECT_DIR$/public/convertSpec.js" />
+      <root url="file://$PROJECT_DIR$/public/karma.conf.js" />
+      <root url="file://$PROJECT_DIR$/public/main.js" />
+      <root url="file://$PROJECT_DIR$/public/convert.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
