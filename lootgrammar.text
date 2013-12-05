@@ -1,0 +1,27 @@
+LITERAL: [^\s]+
+STRING: '([^'\\]|\\.)*
+OPTIONAL: \?
+LOOKUP: {[^}]+}
+PLURAL: $
+BEGIN-CHOICE: \[
+END-CHOICE: \]
+SPACE: \s+
+SEPARATOR: |
+
+item > fragment+
+
+fragment > element SPACE?
+
+element > LOOKUP OPTIONAL?
+				| word
+
+choice > BEGIN-CHOICE choice-item+ END-CHOICE OPTIONAL?
+
+choice-item > SEPARATOR choice-item
+			  		| word
+
+word > LOOKUP
+     | text PLURAL?
+
+text > LITERAL
+ 	 	 | STRING
