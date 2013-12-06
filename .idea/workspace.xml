@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="301e3896-107c-4440-b408-84ea0f9c2649" name="Default" comment="" />
+    <list default="true" id="301e3896-107c-4440-b408-84ea0f9c2649" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/underscoreSpec.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/convertSpec.coffee" afterPath="$PROJECT_DIR$/test/convertSpec.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test-main.coffee" afterPath="$PROJECT_DIR$/test/test-main.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="minventure.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,10 +44,37 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="server.coffee" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="server.coffee" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/server.coffee">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="14" column="0" selection-start="340" selection-end="340" vertical-scroll-proportion="0.3979933" vertical-offset="0" max-vertical-offset="598">
+                <state line="14" column="0" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="test-main.coffee" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/test/test-main.coffee">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="12" column="8" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="convertSpec.coffee" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/test/convertSpec.coffee">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="17" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="underscoreSpec.coffee" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/test/underscoreSpec.coffee">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="3" column="39" selection-start="140" selection-end="140" vertical-scroll-proportion="0.08528428" vertical-offset="0" max-vertical-offset="598">
                   <folding />
                 </state>
               </provider>
@@ -75,11 +108,13 @@
         <option value="$PROJECT_DIR$/public/index.js" />
         <option value="$PROJECT_DIR$/server.coffee" />
         <option value="$PROJECT_DIR$/src/coffee/index.coffee" />
-        <option value="$PROJECT_DIR$/test/convertSpec.coffee" />
         <option value="$PROJECT_DIR$/src/index.jade" />
         <option value="$PROJECT_DIR$/src/site.less" />
         <option value="$PROJECT_DIR$/src/convert.coffee" />
         <option value="$PROJECT_DIR$/src/main.coffee" />
+        <option value="$PROJECT_DIR$/test/test-main.coffee" />
+        <option value="$PROJECT_DIR$/test/convertSpec.coffee" />
+        <option value="$PROJECT_DIR$/test/underscoreSpec.coffee" />
       </list>
     </option>
   </component>
@@ -118,7 +153,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -195,21 +229,35 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="settings" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/coffee-script/bin/coffee" />
+    <property name="options.lastSelected" value="settings" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/coffee-script/bin/coffee" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test" />
+    </key>
   </component>
   <component name="RunManager" selected="Node.js.server.coffee">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -220,23 +268,15 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -317,18 +357,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/convertSpec.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="6" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="221" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="49" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="340">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/convert.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="20" selection-start="82" selection-end="82" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="187" />
@@ -366,11 +394,6 @@
         <state line="8" column="0" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="238" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/convertSpec.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="6" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="62" column="0" selection-start="1983" selection-end="1983" vertical-scroll-proportion="0.0" vertical-offset="571" max-vertical-offset="1156" />
@@ -391,16 +414,37 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10353" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.coffee">
+    <entry file="file://$PROJECT_DIR$/src/main.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="340" selection-end="340" vertical-scroll-proportion="0.3979933" vertical-offset="0" max-vertical-offset="598">
+        <state line="12" column="12" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="7531">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.coffee">
+    <entry file="file://$PROJECT_DIR$/server.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="12" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="7531">
+        <state line="14" column="0" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test-main.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="8" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/convertSpec.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="17" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/underscoreSpec.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="39" selection-start="140" selection-end="140" vertical-scroll-proportion="0.08528428" vertical-offset="0" max-vertical-offset="598">
           <folding />
         </state>
       </provider>

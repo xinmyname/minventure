@@ -4,7 +4,14 @@ requirejs.config {
     baseUrl: '/base/src',
 
     paths: {
-        'jquery': '../bower_components/jquery/jquery'
+        'jquery': '../bower_components/jquery/jquery',
+        'underscore': '../bower_components/underscore/underscore'
+    },
+
+    shim: {
+      'underscore': {
+        exports: '_'
+      }
     },
 
     deps: tests,

@@ -5,4 +5,5 @@ define ['convert'], (Convert) ->
 			n = 42
 			s = c.numberToString n
 			expect(s).toEqual "2.625"
+
 			
