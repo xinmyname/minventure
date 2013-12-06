@@ -5,12 +5,12 @@ LOOKUP: {[^}]+}
 PLURAL: $
 BEGIN-CHOICE: \[
 END-CHOICE: \]
-SPACE: \s+
+SPACE: \s
 SEPARATOR: |
 
 item > fragment+
 
-fragment > element SPACE?
+fragment > element SPACE*
 
 element > LOOKUP OPTIONAL?
 				| word
