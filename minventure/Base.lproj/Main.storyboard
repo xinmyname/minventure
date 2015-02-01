@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Home-->
@@ -72,10 +73,10 @@
             </objects>
             <point key="canvasLocation" x="306" y="142.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Game Controller-->
         <scene sceneID="I99-yz-stM">
             <objects>
-                <viewController id="399-1F-8qk" sceneMemberID="viewController">
+                <viewController id="399-1F-8qk" customClass="GameController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bxc-En-hhU"/>
                         <viewControllerLayoutGuide type="bottom" id="PKV-Kx-XUc"/>
@@ -475,15 +476,10 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="You found a Cubit Zirconia Encrusted Unobtainium Ring of Teleportation!" translatesAutoresizingMaskIntoConstraints="NO" id="cdi-vw-rRV">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycH-ST-2Df" customClass="TextLogView" customModule="minventure" customModuleProvider="target">
                                 <rect key="frame" x="16" y="306" width="568" height="286"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                </variation>
-                            </textView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -491,11 +487,13 @@
                             <constraint firstAttribute="trailing" secondItem="1Kz-m8-VLv" secondAttribute="trailing" constant="16" id="2Rg-6Y-X4C"/>
                             <constraint firstAttribute="trailing" secondItem="COz-cA-Yi3" secondAttribute="trailing" constant="16" id="2yn-sM-8fQ"/>
                             <constraint firstItem="PKV-Kx-XUc" firstAttribute="top" secondItem="WBI-mp-kue" secondAttribute="bottom" constant="20" id="3Lo-tr-r57"/>
+                            <constraint firstItem="PKV-Kx-XUc" firstAttribute="top" secondItem="ycH-ST-2Df" secondAttribute="bottom" constant="8" id="4cF-7g-6we"/>
                             <constraint firstAttribute="trailing" secondItem="COz-cA-Yi3" secondAttribute="trailing" constant="16" id="5w5-ad-WnN"/>
                             <constraint firstItem="yEN-3w-B0t" firstAttribute="top" secondItem="Bxc-En-hhU" secondAttribute="bottom" id="7XN-48-b6Z"/>
                             <constraint firstItem="COz-cA-Yi3" firstAttribute="top" secondItem="Bmw-ze-Phi" secondAttribute="bottom" constant="8" id="8lK-cv-wpc"/>
                             <constraint firstItem="ny1-ia-CL2" firstAttribute="leading" secondItem="U9v-b1-a4n" secondAttribute="leading" constant="16" id="Azf-H6-a22"/>
                             <constraint firstAttribute="trailing" secondItem="Nwe-hM-IEH" secondAttribute="trailing" constant="16" id="B1q-QB-e52"/>
+                            <constraint firstItem="ycH-ST-2Df" firstAttribute="leading" secondItem="U9v-b1-a4n" secondAttribute="leadingMargin" id="CKV-LU-Rls"/>
                             <constraint firstItem="COz-cA-Yi3" firstAttribute="leading" secondItem="H1h-LN-JGe" secondAttribute="trailing" constant="8" id="DSP-Kr-Nqi"/>
                             <constraint firstItem="Flf-RP-KzB" firstAttribute="top" secondItem="HDl-CE-NKW" secondAttribute="bottom" constant="8" id="DgP-rR-xNc"/>
                             <constraint firstItem="WBI-mp-kue" firstAttribute="leading" secondItem="U9v-b1-a4n" secondAttribute="leading" constant="16" id="ELm-g2-2fm"/>
@@ -512,8 +510,6 @@
                             <constraint firstItem="HDl-CE-NKW" firstAttribute="top" secondItem="YeA-LC-iNK" secondAttribute="bottom" constant="8" id="Lfe-RQ-GHs"/>
                             <constraint firstAttribute="trailing" secondItem="uVM-iZ-JVM" secondAttribute="trailing" constant="16" id="Lhg-mn-u70"/>
                             <constraint firstItem="Flf-RP-KzB" firstAttribute="top" secondItem="HDl-CE-NKW" secondAttribute="bottom" constant="8" id="Loz-FC-6ut"/>
-                            <constraint firstItem="cdi-vw-rRV" firstAttribute="top" secondItem="H1h-LN-JGe" secondAttribute="bottom" constant="8" id="Lpb-af-m37"/>
-                            <constraint firstAttribute="trailing" secondItem="cdi-vw-rRV" secondAttribute="trailing" constant="16" id="MPT-DO-E3x"/>
                             <constraint firstItem="Wpq-fs-My8" firstAttribute="top" secondItem="Nwe-hM-IEH" secondAttribute="bottom" constant="8" id="Mvj-34-Ajx"/>
                             <constraint firstItem="YeA-LC-iNK" firstAttribute="top" secondItem="ny1-ia-CL2" secondAttribute="bottom" constant="8" id="NAw-zr-Tv4"/>
                             <constraint firstAttribute="trailing" secondItem="yEN-3w-B0t" secondAttribute="trailing" constant="16" id="OdR-uW-tNW"/>
@@ -531,7 +527,6 @@
                             <constraint firstItem="PKV-Kx-XUc" firstAttribute="top" secondItem="WBI-mp-kue" secondAttribute="bottom" constant="20" id="agO-t4-psD"/>
                             <constraint firstAttribute="trailing" secondItem="WBI-mp-kue" secondAttribute="trailing" constant="16" id="aot-le-Brh"/>
                             <constraint firstItem="Nwe-hM-IEH" firstAttribute="top" secondItem="uVM-iZ-JVM" secondAttribute="bottom" constant="8" id="arL-oF-x4B"/>
-                            <constraint firstItem="cdi-vw-rRV" firstAttribute="leading" secondItem="U9v-b1-a4n" secondAttribute="leading" constant="16" id="bEm-7O-8Nm"/>
                             <constraint firstItem="6qt-0C-RsC" firstAttribute="top" secondItem="Wpq-fs-My8" secondAttribute="bottom" constant="8" id="bbX-lC-VCc"/>
                             <constraint firstAttribute="trailing" secondItem="6qt-0C-RsC" secondAttribute="trailing" constant="16" id="bjz-gk-69S"/>
                             <constraint firstItem="Flf-RP-KzB" firstAttribute="leading" secondItem="U9v-b1-a4n" secondAttribute="leading" constant="16" id="e4D-0E-W4d"/>
@@ -554,9 +549,10 @@
                             <constraint firstItem="HDl-CE-NKW" firstAttribute="leading" secondItem="U9v-b1-a4n" secondAttribute="leading" constant="16" id="vhc-sh-iGd"/>
                             <constraint firstItem="yEN-3w-B0t" firstAttribute="top" secondItem="Bxc-En-hhU" secondAttribute="bottom" id="wVm-zl-7FN"/>
                             <constraint firstItem="uVM-iZ-JVM" firstAttribute="top" secondItem="1Kz-m8-VLv" secondAttribute="bottom" constant="8" id="xWy-7J-YMq"/>
+                            <constraint firstItem="ycH-ST-2Df" firstAttribute="top" secondItem="H1h-LN-JGe" secondAttribute="bottom" constant="8" id="xd1-ww-rb3"/>
+                            <constraint firstItem="ycH-ST-2Df" firstAttribute="trailing" secondItem="U9v-b1-a4n" secondAttribute="trailingMargin" id="xyF-a6-6oo"/>
                             <constraint firstItem="COz-cA-Yi3" firstAttribute="leading" secondItem="H1h-LN-JGe" secondAttribute="trailing" constant="8" id="yVu-Pl-9ve"/>
                             <constraint firstItem="HDl-CE-NKW" firstAttribute="top" secondItem="YeA-LC-iNK" secondAttribute="bottom" constant="8" id="zD6-1H-SOi"/>
-                            <constraint firstItem="PKV-Kx-XUc" firstAttribute="top" secondItem="cdi-vw-rRV" secondAttribute="bottom" constant="8" id="zzR-ve-zbn"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -675,6 +671,15 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="_btnFight" destination="Bmw-ze-Phi" id="dMK-lZ-8zO"/>
+                        <outlet property="_btnMove" destination="6qt-0C-RsC" id="7fG-8a-juw"/>
+                        <outlet property="_btnRest" destination="COz-cA-Yi3" id="waH-cR-1vF"/>
+                        <outlet property="_lblExperience" destination="Nwe-hM-IEH" id="USO-hg-FrE"/>
+                        <outlet property="_lblGold" destination="Wpq-fs-My8" id="bkI-k0-FDS"/>
+                        <outlet property="_lblHealth" destination="1Kz-m8-VLv" id="Wpe-7L-en6"/>
+                        <outlet property="_lblLevel" destination="uVM-iZ-JVM" id="IPX-Il-qd2"/>
+                        <outlet property="_lblLocation" destination="H1h-LN-JGe" id="nL8-qQ-FoC"/>
+                        <outlet property="_tlvStory" destination="ycH-ST-2Df" id="OUd-Pl-M2F"/>
                         <segue destination="mMb-0c-0MD" kind="show" identifier="gameOverSegue" id="m6a-hp-7ul"/>
                     </connections>
                 </viewController>

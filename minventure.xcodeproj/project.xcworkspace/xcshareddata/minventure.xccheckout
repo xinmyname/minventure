@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>540EFEE6-774B-43B9-A67D-22E76960A2DD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>minventure</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2ADBF07805B0D0909318E56CF74A8B78EE68652D</key>
+		<string>bitbucket.org:xinmyname/minventure.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>minventure.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2ADBF07805B0D0909318E56CF74A8B78EE68652D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>bitbucket.org:xinmyname/minventure.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2ADBF07805B0D0909318E56CF74A8B78EE68652D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2ADBF07805B0D0909318E56CF74A8B78EE68652D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>minventure</string>
+		</dict>
+	</array>
+</dict>
+</plist>
