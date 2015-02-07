@@ -14,6 +14,7 @@
 		A1547F7519D52A7B0088AC53 /* minventureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1547F7419D52A7B0088AC53 /* minventureTests.swift */; };
 		A1547F8419D537D10088AC53 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1547F8219D537D10088AC53 /* GameController.swift */; };
 		A1547F8519D537D10088AC53 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1547F8319D537D10088AC53 /* HomeController.swift */; };
+		A16DDA871A85E5BF00A42D71 /* Encounters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DDA861A85E5BF00A42D71 /* Encounters.swift */; };
 		A1EE4AE21A7DF90500C96421 /* TextLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE4AE11A7DF90500C96421 /* TextLogView.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		A1547F7419D52A7B0088AC53 /* minventureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = minventureTests.swift; sourceTree = "<group>"; };
 		A1547F8219D537D10088AC53 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameController.swift; path = "View Controllers/GameController.swift"; sourceTree = "<group>"; };
 		A1547F8319D537D10088AC53 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeController.swift; path = "View Controllers/HomeController.swift"; sourceTree = "<group>"; };
+		A16DDA861A85E5BF00A42D71 /* Encounters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encounters.swift; path = Infrastructure/Encounters.swift; sourceTree = "<group>"; };
 		A1EE4AE11A7DF90500C96421 /* TextLogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextLogView.swift; path = Views/TextLogView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +132,7 @@
 		A1EE4ADF1A7DF77A00C96421 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				A16DDA861A85E5BF00A42D71 /* Encounters.swift */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			files = (
 				A1547F5F19D52A7B0088AC53 /* AppDelegate.swift in Sources */,
 				A1547F8419D537D10088AC53 /* GameController.swift in Sources */,
+				A16DDA871A85E5BF00A42D71 /* Encounters.swift in Sources */,
 				A1EE4AE21A7DF90500C96421 /* TextLogView.swift in Sources */,
 				A1547F8519D537D10088AC53 /* HomeController.swift in Sources */,
 			);
@@ -323,7 +327,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = "";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -362,7 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -377,7 +381,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = minventure/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -389,7 +393,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = minventure/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
