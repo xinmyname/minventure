@@ -15,6 +15,8 @@
 		A1547F8419D537D10088AC53 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1547F8219D537D10088AC53 /* GameController.swift */; };
 		A1547F8519D537D10088AC53 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1547F8319D537D10088AC53 /* HomeController.swift */; };
 		A16DDA871A85E5BF00A42D71 /* Encounters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DDA861A85E5BF00A42D71 /* Encounters.swift */; };
+		A16DDA891A85F98900A42D71 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DDA881A85F98900A42D71 /* GameState.swift */; };
+		A16DDA8B1A85F9D300A42D71 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DDA8A1A85F9D300A42D71 /* PlayerState.swift */; };
 		A1EE4AE21A7DF90500C96421 /* TextLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE4AE11A7DF90500C96421 /* TextLogView.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		A1547F8219D537D10088AC53 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameController.swift; path = "View Controllers/GameController.swift"; sourceTree = "<group>"; };
 		A1547F8319D537D10088AC53 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeController.swift; path = "View Controllers/HomeController.swift"; sourceTree = "<group>"; };
 		A16DDA861A85E5BF00A42D71 /* Encounters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encounters.swift; path = Infrastructure/Encounters.swift; sourceTree = "<group>"; };
+		A16DDA881A85F98900A42D71 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameState.swift; path = Infrastructure/GameState.swift; sourceTree = "<group>"; };
+		A16DDA8A1A85F9D300A42D71 /* PlayerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerState.swift; path = Infrastructure/PlayerState.swift; sourceTree = "<group>"; };
 		A1EE4AE11A7DF90500C96421 /* TextLogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextLogView.swift; path = Views/TextLogView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				A16DDA861A85E5BF00A42D71 /* Encounters.swift */,
+				A16DDA881A85F98900A42D71 /* GameState.swift */,
+				A16DDA8A1A85F9D300A42D71 /* PlayerState.swift */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";
@@ -249,6 +255,8 @@
 				A1547F5F19D52A7B0088AC53 /* AppDelegate.swift in Sources */,
 				A1547F8419D537D10088AC53 /* GameController.swift in Sources */,
 				A16DDA871A85E5BF00A42D71 /* Encounters.swift in Sources */,
+				A16DDA8B1A85F9D300A42D71 /* PlayerState.swift in Sources */,
+				A16DDA891A85F98900A42D71 /* GameState.swift in Sources */,
 				A1EE4AE21A7DF90500C96421 /* TextLogView.swift in Sources */,
 				A1547F8519D537D10088AC53 /* HomeController.swift in Sources */,
 			);
