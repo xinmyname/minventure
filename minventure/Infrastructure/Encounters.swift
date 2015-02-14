@@ -30,10 +30,6 @@ public class Encounter {
         
     }
     
-    func teardown() {
-        
-    }
-    
     func nextLimit() -> Int {
         let delta = _maxLimit - _minLimit
         return Int(arc4random_uniform(UInt32(delta))) + _minLimit

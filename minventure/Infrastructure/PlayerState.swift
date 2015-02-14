@@ -10,4 +10,34 @@ import Foundation
 
 public class PlayerState {
     
+    public var potential:String = ""
+    public var kinetic:String = ""
+    
+    init(potential:String, kinetic:String) {
+        self.potential = potential
+        self.kinetic = kinetic
+    }
+
+    public func action() {
+        
+    }
 }
+
+public class Moving : PlayerState {
+    init() {
+        super.init(potential:"Move!", kinetic:"Moving!")
+    }
+}
+
+public class Fighting : PlayerState {
+    init() {
+        super.init(potential:"Fight!", kinetic:"Fighting!")
+    }
+}
+
+public class Resting : PlayerState {
+    init() {
+        super.init(potential:"Rest!", kinetic:"Resting!")
+    }
+}
+
