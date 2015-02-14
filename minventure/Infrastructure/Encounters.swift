@@ -10,13 +10,11 @@ import Foundation
 
 public class Encounter {
 
-    private var _id:String
     private var _name:String
     private var _minLimit:Int
     private var _maxLimit:Int
     
-    init(id:String, name:String, minLimit:Int, maxLimit:Int) {
-        _id = id
+    init(name:String, minLimit:Int, maxLimit:Int) {
         _name = name
         _minLimit = minLimit
         _maxLimit = maxLimit
@@ -38,6 +36,7 @@ public class Encounter {
 
 public class Location : Encounter {
     
+    
 }
 
 public class Monster : Encounter {
@@ -46,7 +45,7 @@ public class Monster : Encounter {
     public var experience:Int = 0
     
     init() {
-        super.init(id: "monster", name: "Monster!", minLimit: 0, maxLimit: 0)
+        super.init(name: "Monster!", minLimit: 0, maxLimit: 0)
     }
     
     override func setup() {
@@ -60,7 +59,7 @@ public class Monster : Encounter {
 public class Ruins : Encounter {
 
     init() {
-        super.init(id: "ruins", name: "Ruins!", minLimit: 2, maxLimit: 4)
+        super.init(name: "Ruins!", minLimit: 2, maxLimit: 4)
     }
 
 }
@@ -68,7 +67,7 @@ public class Ruins : Encounter {
 public class City : Encounter {
     
     init() {
-        super.init(id: "city", name: "City!", minLimit: 4, maxLimit: 6)
+        super.init(name: "City!", minLimit: 4, maxLimit: 6)
     }
     
 }
@@ -76,7 +75,7 @@ public class City : Encounter {
 public class Town : Encounter {
     
     init() {
-        super.init(id: "town", name: "town!", minLimit: 2, maxLimit: 4)
+        super.init(name: "Town!", minLimit: 2, maxLimit: 4)
     }
     
 }

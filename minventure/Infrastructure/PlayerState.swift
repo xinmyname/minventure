@@ -25,19 +25,19 @@ public class PlayerState {
 
 public class Moving : PlayerState {
     init() {
-        super.init(potential:"Move!", kinetic:"Moving!")
+        super.init(potential:"move!", kinetic:"moving!")
     }
 }
 
 public class Fighting : PlayerState {
     init() {
-        super.init(potential:"Fight!", kinetic:"Fighting!")
+        super.init(potential:"fight!", kinetic:"fighting!")
     }
 }
 
 public class Resting : PlayerState {
     init() {
-        super.init(potential:"Rest!", kinetic:"Resting!")
+        super.init(potential:"rest!", kinetic:"resting!")
     }
 }
 
