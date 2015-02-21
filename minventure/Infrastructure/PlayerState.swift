@@ -18,8 +18,8 @@ public class PlayerState {
         self.kinetic = kinetic
     }
 
-    public func action() {
-        
+    public func action(gameState:GameState) {
+        NSLog(kinetic)
     }
 }
 

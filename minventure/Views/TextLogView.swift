@@ -23,7 +23,7 @@ public class TextLogView:UIView {
         _maxSpans = 0
         _maxWidth = 0
         
-        _font = UIFont.systemFontOfSize(20)
+        _font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
         
         _attributes = [
             NSFontAttributeName: _font,

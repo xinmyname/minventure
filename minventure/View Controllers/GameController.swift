@@ -15,6 +15,7 @@ class GameController: UIViewController {
     private let _fight:Fighting
     private let _rest:Resting
     private let _encounters:[String:Encounter]
+    private let _encounterChance:[EncounterChance]
     
     private let _blueColor:UIColor
     private let _timer:dispatch_source_t
@@ -37,20 +38,37 @@ class GameController: UIViewController {
         _rest = Resting()
         
         _encounters = [
-            "swamp": Location(name: "Swamp!", minLimit: 2, maxLimit: 8),
-            "prarie": Location(name: "Prarie!", minLimit: 2, maxLimit: 7),
-            "hills": Location(name: "Hills!", minLimit: 2, maxLimit: 8),
-            "mountains": Location(name: "Mountains!", minLimit: 2, maxLimit: 5),
-            "desert": Location(name: "Desert!", minLimit: 2, maxLimit: 8),
-            "coastline": Location(name: "Coastline!", minLimit: 2, maxLimit: 5),
-            "jungle": Location(name: "Jungle!", minLimit: 2, maxLimit: 8),
-            "tundra": Location(name: "Tundra!", minLimit: 2, maxLimit: 6),
-            "forest": Location(name: "Forest!", minLimit: 2, maxLimit: 8),
-            "savana": Location(name: "Savana!", minLimit: 2, maxLimit: 8),
+            "swamp": Location(name: "Swamp!",           minLimit: 2, maxLimit: 8, startColor:"#89c403", endColor:"#77a809", textColor:"#fff"),
+            "prarie": Location(name: "Prarie!",         minLimit: 2, maxLimit: 7, startColor:"#EBFA8F", endColor:"#B8ED75", textColor:"#000"),
+            "hills": Location(name: "Hills!",           minLimit: 2, maxLimit: 8, startColor:"#E7CE65", endColor:"#8E9960", textColor:"#000"),
+            "mountains": Location(name: "Mountains!",   minLimit: 2, maxLimit: 5, startColor:"#C2B8A4", endColor:"#492A02", textColor:"#fff"),
+            "desert": Location(name: "Desert!",         minLimit: 2, maxLimit: 8, startColor:"#FFCB64", endColor:"#EEC879", textColor:"#000"),
+            "coastline": Location(name: "Coastline!",   minLimit: 2, maxLimit: 5, startColor:"#208BDF", endColor:"#D88D2C", textColor:"#fff"),
+            "jungle": Location(name: "Jungle!",         minLimit: 2, maxLimit: 8, startColor:"#43A530", endColor:"#1D350E", textColor:"#fff"),
+            "tundra": Location(name: "Tundra!",         minLimit: 2, maxLimit: 6, startColor:"#E4E4E4", endColor:"#92A3B6", textColor:"#000"),
+            "forest": Location(name: "Forest!",         minLimit: 2, maxLimit: 8, startColor:"#3ACA68", endColor:"#2F5C0B", textColor:"#fff"),
+            "savana": Location(name: "Savana!",         minLimit: 2, maxLimit: 8, startColor:"#FAE75A", endColor:"#AA8E36", textColor:"#000"),
             "ruins": Ruins(),
             "town": Town(),
             "city": City(),
             "monster": Monster()
+        ]
+        
+        _encounterChance = [
+            EncounterChance(value:0.00, id:"ruins"),
+            EncounterChance(value:0.05, id:"town"),
+            EncounterChance(value:0.10, id:"city"),
+            EncounterChance(value:0.20, id:"swamp"),
+            EncounterChance(value:0.25, id:"savana"),
+            EncounterChance(value:0.30, id:"desert"),
+            EncounterChance(value:0.35, id:"jungle"),
+            EncounterChance(value:0.40, id:"forest"),
+            EncounterChance(value:0.60, id:"hills"),
+            EncounterChance(value:0.65, id:"prarie"),
+            EncounterChance(value:0.70, id:"mountains"),
+            EncounterChance(value:0.75, id:"tundra"),
+            EncounterChance(value:0.80, id:"coastline"),
+            EncounterChance(value:0.85, id:"monster")
         ]
         
         _blueColor = UIColor(red: 0, green: (122.0/255.0), blue: 1, alpha: 1)
@@ -81,13 +99,18 @@ class GameController: UIViewController {
         _gameState.encounter = _encounters["forest"]
         _gameState.playerState = _rest
         
+        self.tappedRest(_btnRest)
+        self.tick()
+        
         dispatch_resume(_timer)
     }
 
     func tick() {
+        
+        
 
-        _gameState.playerState?.action()
-        _gameState.encounter?.action()
+        _gameState.playerState?.action(_gameState)
+        _gameState.encounter?.action(_gameState)
         
 //        _tlvStory.addLine(line)
     }
@@ -138,5 +161,9 @@ class GameController: UIViewController {
         _btnRest.setTitle(_rest.kinetic, forState: UIControlState.Normal)
         _btnRest.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         _btnRest.backgroundColor = _blueColor
+    }
+    
+    @IBAction func unwindToGame(sender: UIStoryboardSegue)
+    {
     }
 }
