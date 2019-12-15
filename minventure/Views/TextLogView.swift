@@ -95,7 +95,7 @@ public class TextLogView:UIView {
     
     private func splitLineIntoWords(line:String) -> [String] {
     
-        return split(line, {$0 == " "}, maxSplit: Int.max, allowEmptySlices: false)
+        return split(line, maxSplit: Int.max, allowEmptySlices: false, isSeparator:{$0 == " "})
     }
     
     private func widthOfWord(word:NSString) -> Int {
