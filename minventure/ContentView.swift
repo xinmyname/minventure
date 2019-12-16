@@ -45,7 +45,7 @@ struct ContentView: View {
                     }
                 }
                 .padding()
-                .background(Color.green)
+                .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0, green: 1, blue: 0.3), Color(red: 0.6, green: 0.5, blue: 0.4)]), startPoint: .top, endPoint: .bottom))
             }
             .padding(.vertical)
             
@@ -54,26 +54,36 @@ struct ContentView: View {
                 Button(action: {}) {
                     Text("move!")
                         .foregroundColor(Color.pink)
-                        .padding(8)
+                        .background(Color.clear)
+                        .padding(12)
                 }
                 .frame(maxWidth: .infinity)
-                .border(Color.pink, width: 4)
-
+                .overlay(
+                           RoundedRectangle(cornerRadius: 8)
+                           .stroke(Color.pink, lineWidth: 4)
+                )
+                
                 Button(action: {}) {
                     Text("fight!")
                         .foregroundColor(Color.pink)
-                        .padding(8)
+                        .padding(12)
                 }
                 .frame(maxWidth: .infinity)
-                .border(Color.pink, width: 4)
+                .overlay(
+                           RoundedRectangle(cornerRadius: 8)
+                           .stroke(Color.pink, lineWidth: 4)
+                )
 
                 Button(action: {}) {
                     Text("rest!")
                         .foregroundColor(Color.pink)
-                        .padding(8)
+                        .padding(12)
                 }
                 .frame(maxWidth: .infinity)
-                .border(Color.pink, width: 4)
+                .overlay(
+                           RoundedRectangle(cornerRadius: 8)
+                           .stroke(Color.pink, lineWidth: 4)
+                )
             }
             .frame(maxWidth: .infinity)
             
