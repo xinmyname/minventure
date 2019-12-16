@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    @ObservedObject var gameState = GameManager.shared.state
+    
     var body: some View {
     
         VStack(alignment: .leading) {
@@ -20,7 +23,9 @@ struct ContentView: View {
             HStack() {
 
                 VStack(alignment: .leading) {
+                    Text("turn")
                     Text("health")
+                    Text("max health")
                     Text("level")
                     Text("experience")
                     Text("gold")
@@ -28,10 +33,12 @@ struct ContentView: View {
                 .padding(.trailing)
 
                 VStack(alignment: .leading) {
-                    Text("32/32")
-                    Text("1")
-                    Text("0")
-                    Text("0")
+                    Text("\(self.gameState.turn)")
+                    Text("\(self.gameState.health)")
+                    Text("\(self.gameState.maxHealth)")
+                    Text("\(self.gameState.level)")
+                    Text("\(self.gameState.experience)")
+                    Text("\(self.gameState.gold)")
                 }
             }
             .padding(.top)
