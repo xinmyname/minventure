@@ -16,4 +16,5 @@ class GameState: ObservableObject {
     @Published var level: Int = 0
     @Published var experience: Int = 0
     @Published var gold: Int = 0
+    @Published var actionState: ActionState = .resting
 }

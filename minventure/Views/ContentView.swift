@@ -55,45 +55,8 @@ struct ContentView: View {
                 .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0, green: 1, blue: 0.3), Color(red: 0.6, green: 0.5, blue: 0.4)]), startPoint: .top, endPoint: .bottom))
             }
             .padding(.vertical)
-            
-            VStack(alignment: .leading, spacing: 16) {
-            
-                Button(action: {}) {
-                    Text("move!")
-                        .foregroundColor(Color.pink)
-                        .background(Color.clear)
-                        .padding(12)
-                }
-                .frame(maxWidth: .infinity)
-                .overlay(
-                           RoundedRectangle(cornerRadius: 8)
-                           .stroke(Color.pink, lineWidth: 4)
-                )
-                
-                Button(action: {}) {
-                    Text("fight!")
-                        .foregroundColor(Color.pink)
-                        .padding(12)
-                }
-                .frame(maxWidth: .infinity)
-                .overlay(
-                           RoundedRectangle(cornerRadius: 8)
-                           .stroke(Color.pink, lineWidth: 4)
-                )
-
-                Button(action: {}) {
-                    Text("rest!")
-                        .foregroundColor(Color.pink)
-                        .padding(12)
-                }
-                .frame(maxWidth: .infinity)
-                .overlay(
-                           RoundedRectangle(cornerRadius: 8)
-                           .stroke(Color.pink, lineWidth: 4)
-                )
-            }
-            .frame(maxWidth: .infinity)
-            
+  
+            ActionPickerView(selectedAction: $gameState.actionState)
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding()

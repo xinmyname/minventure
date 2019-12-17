@@ -28,6 +28,10 @@ class GameManager {
     
     public func stop() {
 
+        if self.timer == nil {
+            return
+        }
+        
         self.timer?.invalidate()
         self.timer = nil
 
