@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol ActionDescription: CaseIterable {
+protocol ActionDescription  {
     var activeText: String { get }
     var inactiveText: String { get }
 }
 
-enum ActionState: ActionDescription {
+enum ActionState: ActionDescription,CaseIterable {
     
     case resting
     case moving

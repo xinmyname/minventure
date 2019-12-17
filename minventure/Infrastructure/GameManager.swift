@@ -21,7 +21,7 @@ class GameManager {
             return
         }
         
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: tick)
+        self.timer = Timer.scheduledTimer(withTimeInterval: 0.8, repeats: true, block: tick)
         
         NSLog("Started!")
     }
